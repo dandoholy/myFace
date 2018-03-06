@@ -5,6 +5,10 @@
     "postinstall": "webpack",
     "webpack": "webpack --watch"
   },
+  "engines": {
+    "node": "^6.10.1",
+    "npm": "^3.10.10"
+  },
   "private": true,
   "dependencies": {
     "babel-core": "^6.26.0",
