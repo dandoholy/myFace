@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     errors: state.errors.session,
     formType: 'Create Account',
+
   };
 };
 

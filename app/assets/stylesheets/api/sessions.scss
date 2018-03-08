@@ -1,3 +1,48 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logged-out-banner {
+  background: #3B5998;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 82px;
+}
+
+.login-form-container {
+  display: flex;
+}
+
+.logged-out-banner .login-form-box {
+  // color: black;
+  font-size: 12px;
+}
+
+.login-form-box {
+}
+
+.logged-out-banner div {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.signup-main-div {
+  width: 1555px;
+  height: 600px;
+  background-color: #EDF0F5;
+}
+
+.signup-greeting span:nth-of-type(even) {
+  margin-left: 10px;
+  font-size: 15px;
+  color: #666;
+}
+
+.signup-greeting span:nth-of-type(odd) {
+  font-size: 17px;
+  color: #333;
+}

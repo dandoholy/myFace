@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
     };
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
     e.preventDefault();
     const user = merge({}, this.state);
     this.props.login(user);
@@ -27,20 +27,26 @@ class LoginForm extends React.Component {
     return (
       <div className='login-form-container'>
         <form onSubmit={this.handleSubmit} className='login-form-box'>
-            <label>Email
-              <input type='text'
-                value={this.state.email}
-                onChange={this.update('email')}
-                className='login-input'
-              />
-            </label>
-            <label>Password
-              <input type='password'
-                value={this.state.password}
-                onChange={this.update('password')}
-                className='login-input'
-              />
-            </label>
+            <div className='login-email'>
+              <label>Email
+                <br></br>
+                <input type='text'
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  className='login-input'
+                  />
+              </label>
+            </div>
+            <div className='login-password'>
+              <label>Password
+                <br></br>
+                <input type='password'
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className='login-input'
+                  />
+              </label>
+            </div>
             <input className='session-submit'
               type='submit'
               value={this.props.formType}

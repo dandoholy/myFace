@@ -14,10 +14,12 @@ class User < ApplicationRecord
   end
 
   def self.generate_session_token
+    token = nil
     loop do
       token = SecureRandom.urlsafe_base64
       break unless User.exists?(session_token: token)
     end
+    token
   end
 
   def password=(password)

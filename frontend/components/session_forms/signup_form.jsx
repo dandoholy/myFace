@@ -1,19 +1,31 @@
 import React from 'react';
+import { merge } from 'lodash';
 
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.date = new Date();
+    const currYear = String(this.date.getFullYear());
+    let currMo = String(this.date.getMonth()+1);
+    if (currMo < 10) { currMo = `0${currMo}`}
+    let currDay = String(this.date.getDate());
+    if (currDay < 10) { currDay = `0${currDay}`}
+
     this.state = {
       first_name: '',
       last_name: '',
       email: '',
       password: '',
-      birthday: '',
+      birthday: `${currYear}-${currMo}-${currDay}`,
       gender: ''
     };
-    this.birthday = ['0000', '00', '00'];
+    this.birthday = [currYear, currMo, currDay];
+    // debugger
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateBirthday = this.updateBirthday.bind(this);
+    this.update = this.update.bind(this);
   }
 
   update(field){
@@ -25,26 +37,37 @@ class SignupForm extends React.Component {
   updateBirthday(idx) {
     return (e) => {
       let res = e.currentTarget.value
-      if (res < 10) { res = `0${res}`}
-      this.birthday[idx] =res ;
+      this.birthday[idx] = res;
       const birthday = this.birthday.join('-');
       this.setState({ birthday })
     }
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
     e.preventDefault();
     const user = merge({}, this.state);
+    debugger
     this.props.signup(user);
   }
 
   render() {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const monthOpts = months.map((mo, idx) => {
-      return ( <option key={idx} value={idx+1}>{mo}</option>);
+    const monthsOpts = months.map((mo, idx) => {
+      return ( <option key={idx}  value={(idx+1 < 10 ) ? `0${idx+1}` : String(idx+1)}>{mo}</option>);
+    });
+    const daysOpts = Array.from(new Array(31), (x,i) => String(i+1)).map((day) => {
+      return ( <option key={day} value={(day < 10 ) ? `0${day}` : day}>{day}</option> )
     })
+    const yearsOpts = Array.from(new Array(114), (x,i) => String(i+this.date.getFullYear()-113)).reverse().map((year) => {
+      return ( <option key={year} value={year}>{year}</option> )
+    })
+    // debugger
+    const errors = this.props.errors.map( (err, idx) => {
+      return (<li key={idx}>{err}</li>)
+    });
     return(
       <div className='signup-form-container'>
+        <ul>{errors}</ul>
         <div className='signup-header-box'>
           <div className='signup-header-line1'>Create a New Account</div>
           <div className='signup-header-line2'>It’s free and always will be.</div>
@@ -76,14 +99,25 @@ class SignupForm extends React.Component {
           />
           <label>Birthday
             <select value={this.birthday[1]} onChange={this.updateBirthday(1)}>
-              {monthOpts}
+              {monthsOpts}
             </select>
-            <input type='date'
-              value={this.state.birthday}
-              onChange={this.update('birthday')}
-              className='signup-birthday-input'
-            />
+            <select value={this.birthday[2]} onChange={this.updateBirthday(2)}>
+              {daysOpts}
+            </select>
+            <select value={String(this.birthday[0]-25)} onChange={this.updateBirthday(0)}>
+              {yearsOpts}
+            </select>
           </label>
+            <div className='gender-buttons'>
+              <label>
+                <input type='radio' value='female' onChange={this.update('gender')}></input>
+                Female
+              </label>
+              <label>
+                <input type='radio' value='male' onChange={this.update('gender')}></input>
+                Male
+              </label>
+            </div>
           <input className='signup-submit'
             type='submit'
             value={this.props.formType}
