@@ -18,7 +18,7 @@ class Header extends React.Component {
       <div className='header'>
         <div className='header-content'>
           <div className='header-logo-div'>
-            <img className='header-logo' src={mf_logo}/>
+            <a href='/'><img className='header-logo' src={mf_logo}/></a>
           </div>
           <div className='header-search-div'>
             <input
@@ -31,8 +31,12 @@ class Header extends React.Component {
             </div>
           </div>
           <div className='header-nav-bar'>
-            <div className='header-prof-link'></div>
-            <div className='header-feed-link'></div>
+            <div className='header-prof-link'>
+              <a href={`/#/u/${this.props.currentUser.id}`}>Profile Test</a>
+            </div>
+            <div className='header-feed-link'>
+              <a href={`/`}>Home Test</a>
+            </div>
           </div>
           <div className='header-notifications'>
             <div className='request-notifications'></div>

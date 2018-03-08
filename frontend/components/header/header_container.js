@@ -5,7 +5,7 @@ import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-
+    currentUser: state.session.currentUser
   };
 };
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
