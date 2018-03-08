@@ -1,48 +1,289 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  margin: 0;
+}
+
+.logged-out-content input {
+  background-color: white;
+  font-family: 'SF Optimized', system-ui;
+  color: black;
+}
 
 .logged-out-banner {
   background: #3B5998;
-  color: white;
   display: flex;
+  color: white;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  min-width: 980px;
   height: 82px;
 }
 
-.login-form-container {
+.banner-content {
+  min-width: 980px;
+  width: 100px;
   display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  font-family: 'SF Optimized', system-ui;
+}
+
+.login-form-container {
+  width: 456px;
+  height: 65px;
+  padding-top: 13px;
+}
+
+.login-input-labels {
+  display: inline-block;
+  width: 456px;
+  height: 21px;
+}
+
+.login-inputs-div {
+  width: 456px;
+  height: 24px;
+}
+
+.login-label {
+  width: 150px;
+  height: 17px;
+  padding: 0 0 4px 14px;
+  display: inline-block;
+}
+
+.login-inputs {
+  display: inline-block;
+  width: 150px;
+  height: 24px;
+  padding-left: 14px;
+}
+
+.login-input {
+  width: 142px;
+  height: 15px;
+  padding: 3px 3px 4px 3px;
+  border: 1px solid rgb(29, 42, 91);
+}
+
+.session-submit-button {
+  width: 50px;
+  height: 24px;
+  padding-left: 14px;
+  display: inline-block;
+}
+
+.session-submit {
+  color: white;
+  background-color: rgb(66, 103, 178);
+  border: 1px solid rgb(41, 72, 125);
+  border-radius: 2px;
+  width: 35.75px;
+  height: 18px;
+  padding: 2px 6px;
+}
+
+.demo-button {
+  width: 50px;
+  height: 24px;
+  padding-left: 14px;
+  display: inline-block;
+}
+
+.demo-submit {
+  color: white;
+  background-color: rgb(66, 103, 178);
+  border: 1px solid rgb(41, 72, 125);
+  border-radius: 2px;
+  width: 35.75px;
+  height: 18px;
+  padding: 2px 6px;
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  padding: 3px 3px 4px 3px;
+  margin-top: 13px;
+}
+
+.signup-submit {
+  color: white;
+  background-color: rgb(105, 167, 78);
+  box-shadow: rgb(164, 227, 135) 0px 1px 1px 0px inset;
+  border-radius: 5px;
+  width: 152px;
+  height: 23px;
+  border: 1px solid rgb(44, 81, 21);
+  margin: 10px 0;
+  padding: 7px 20px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 2px;
 }
 
 .logged-out-banner .login-form-box {
-  // color: black;
   font-size: 12px;
 }
 
 .login-form-box {
+  display: inline-block;
 }
 
-.logged-out-banner div {
+.login-email, .login-password, .session-submit {
   display: inline-block;
-  margin-right: 20px;
-  margin-top: 10px;
 }
 
 .signup-main-div {
-  width: 1555px;
-  height: 600px;
+  min-width: 980px;
+  min-height: 598px;
   background-color: #EDF0F5;
+
+}
+
+.signup-main-content {
+  height: 598px;
+  width: 980px;
+  padding: 20px 0;
+  display: flex;
+  margin: 0 auto;
+}
+
+.signup-main-content > div {
+  display: inline-block;
+}
+
+.signup-main-content p {
+  font-size: 28px;
+  font-weight: 700;
+  width: 408px;
+  height: 72px;
+  padding: 42px 0;
 }
 
 .signup-greeting span:nth-of-type(even) {
   margin-left: 10px;
   font-size: 15px;
   color: #666;
+  font-weight: 700px;
+  font-family: "SF Optimized", system-ui;
 }
 
 .signup-greeting span:nth-of-type(odd) {
   font-size: 17px;
+  font-weight: 700;
   color: #333;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+}
+
+.signup-greeting {
+  width: 565px;
+  height: 367px;
+  margin-right: 16px;
+}
+
+
+.signup-full-name-div {
+  width: 399px;
+  height: 49px;
+}
+
+.signup-fname-div {
+  display: inline-block;
+  margin: 0 11px 10px 0;
+  width: 194px;
+}
+
+.signup-lname-div {
+  display: inline-block;
+  margin: 0 0px 10px 0;
+  width: 194px;
+}
+
+.signup-input-div {
+  padding-bottom: 10px;
+}
+
+.signup-name-input {
+  width: 172px;
+}
+
+.birthday-label {
+  font-size: 18px;
+  font-family: 'SF Optimized', system-ui;
+  width: 399px;
+  height: 24px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.birthday-select {
+  border: 1px solid rgb(189, 199, 216);
+  height: 28px;
+  font-size: 13px;
+  font-family: 'SF Optimized', system-ui;
+  &:nth-of-type(1) { width: 61px; }
+  &:nth-of-type(2) { width: 45px; }
+  &:nth-of-type(3) { width: 54px; }
+}
+
+.gender-buttons {
+  width: 399px;
+  height: 30.5px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.gender-span {
+  width: 89px;
+  height: 20px;
+  padding: 5px 4px;
+}
+
+.gender-radio {
+  margin: 3px;
+  width: 12px;
+  height: 13px;
+}
+
+.gender-label {
+  width: auto;
+  height: auto;
+  padding: 0 10px 0 3px;
+}
+
+.signup-input {
+  width: 377px;
+}
+
+
+.signup-name-input, .signup-input {
+  border: 1px solid rgb(189, 199, 216);
+  color: rgb(248, 248, 248);
+  border-radius: 5px;
+  height: 21px;
+  padding: 8px 10px;
+  font-size: 18px;
+}
+
+.signup-header-box {
+  width: 399px;
+}
+
+.signup-header-line1 {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+  margin-bottom: 5px;
+}
+
+.signup-header-line2 {
+  font-size: 19px;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+  margin-bottom: 20px;
 }

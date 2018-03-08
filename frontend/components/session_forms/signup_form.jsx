@@ -51,7 +51,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const monthsOpts = months.map((mo, idx) => {
       return ( <option key={idx}  value={(idx+1 < 10 ) ? `0${idx+1}` : String(idx+1)}>{mo}</option>);
     });
@@ -61,7 +61,6 @@ class SignupForm extends React.Component {
     const yearsOpts = Array.from(new Array(114), (x,i) => String(i+this.date.getFullYear()-113)).reverse().map((year) => {
       return ( <option key={year} value={year}>{year}</option> )
     })
-    // debugger
     const errors = this.props.errors.map( (err, idx) => {
       return (<li key={idx}>{err}</li>)
     });
@@ -69,59 +68,71 @@ class SignupForm extends React.Component {
       <div className='signup-form-container'>
         <ul>{errors}</ul>
         <div className='signup-header-box'>
-          <div className='signup-header-line1'>Create a New Account</div>
+          <div className='signup-header-line1'>Sign Up</div>
           <div className='signup-header-line2'>It’s free and always will be.</div>
         </div>
         <form onSubmit={this.handleSubmit} className='signup-form-box'>
-          <input type='text'
-            value={this.state.first_name}
-            onChange={this.update('first_name')}
-            className='signup-name-input'
-            placeholder='First name'
-          />
-          <input type='text'
-            value={this.state.last_name}
-            onChange={this.update('last_name')}
-            className='signup-name-input'
-            placeholder='Last name'
-          />
-          <input type='text'
-            value={this.state.email}
-            onChange={this.update('email')}
-            className='signup-input'
-            placeholder='Email address'
-          />
-          <input type='password'
-            value={this.state.password}
-            onChange={this.update('password')}
-            className='signup-input'
-            placeholder='New password'
-          />
-          <label>Birthday
-            <select value={this.birthday[1]} onChange={this.updateBirthday(1)}>
-              {monthsOpts}
-            </select>
-            <select value={this.birthday[2]} onChange={this.updateBirthday(2)}>
-              {daysOpts}
-            </select>
-            <select value={String(this.birthday[0]-25)} onChange={this.updateBirthday(0)}>
-              {yearsOpts}
-            </select>
-          </label>
-            <div className='gender-buttons'>
-              <label>
-                <input type='radio' value='female' onChange={this.update('gender')}></input>
-                Female
-              </label>
-              <label>
-                <input type='radio' value='male' onChange={this.update('gender')}></input>
-                Male
-              </label>
+          <div className='signup-full-name-div'>
+            <div className='signup-fname-div'>
+              <input type='text'
+                value={this.state.first_name}
+                onChange={this.update('first_name')}
+                className='signup-name-input'
+                placeholder='First name'
+                />
             </div>
-          <input className='signup-submit'
+            <div className='signup-lname-div'>
+              <input type='text'
+                value={this.state.last_name}
+                onChange={this.update('last_name')}
+                className='signup-name-input'
+                placeholder='Last name'
+                />
+            </div>
+          </div>
+          <div className='signup-input-div'>
+            <input type='text'
+              value={this.state.email}
+              onChange={this.update('email')}
+              className='signup-input'
+              placeholder='Email address'
+              />
+          </div>
+          <div className='signup-input-div'>
+            <input type='password'
+              value={this.state.password}
+              onChange={this.update('password')}
+              className='signup-input'
+              placeholder='New password'
+              />
+          </div>
+          <div className='birthday-div'>
+            <div className='birthday-label'>Birthday</div>
+            <div className='birthday-select-div'>
+              <select className='birthday-select' value={this.birthday[1]} onChange={this.updateBirthday(1)}>
+                {monthsOpts}
+              </select>
+              <select className='birthday-select' value={this.birthday[2]} onChange={this.updateBirthday(2)}>
+                {daysOpts}
+              </select>
+              <select className='birthday-select' value={String(this.birthday[0]-25)} onChange={this.updateBirthday(0)}>
+                {yearsOpts}
+              </select>
+            </div>
+          </div>
+          <div className='gender-buttons'>
+            <span className='gender-span'>
+              <input className='gender-radio' type='radio' value='female' onChange={this.update('gender')}></input>
+              <label className='gender-label'>Female</label>
+            </span>
+            <span className='gender-span'>
+              <input className='gender-radio' type='radio' value='male' onChange={this.update('gender')}></input>
+              <label className='gender-label'>Male</label>
+            </span>
+          </div>
+          <button className='signup-submit'
             type='submit'
-            value={this.props.formType}
-          />
+          >{this.props.formType}</button>
         </form>
       </div>
     );
