@@ -5,6 +5,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LoggedOutHeader from './logged_out_splash/logged_out_header';
 import LoggedOutBody from './logged_out_splash/logged_out_body';
 import HeaderContainer from './header/header_container';
+import ProfilePageContainer from './profile/profile_page_container';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       </div>
       <ProtectedRoute path='/' component={HeaderContainer} />
       <ProtectedRoute path='/' component={FeedPage} />
+      <ProtectedRoute path='/u/:userId' component={ProfilePageContainer} />
     </div>
   );
 }

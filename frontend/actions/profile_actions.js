@@ -15,10 +15,10 @@ export const receiveErrors = errors => {
     type: RECEIVE_PROFILE_ERRORS,
     errors
   }
-}
+};
 
-export const fetchProfile = id => {
-  return UserAPIUtil.fetchProfile(id).then(
+export const fetchProfile = id => dispatch => {
+  return ProfileAPIUtil.fetchProfile(id).then(
     profile => dispatch(receiveProfile(profile)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   )

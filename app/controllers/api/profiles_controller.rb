@@ -17,8 +17,13 @@ class Api::ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = Profile.find_by(user_id: params[:id])
+    render json: ['Profile not found.'], status: 404 unless @profile
+  end
+
   private
   def profile_params
-    params.require(:profile).permit(:nickname, :address, :phone_number, :work. :college)
+    params.require(:profile).permit(:nickname, :address, :phone_number, :work, :college)
   end
 end
