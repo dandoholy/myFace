@@ -30,20 +30,32 @@ class Header extends React.Component {
               <i className="material-icons">search</i>
             </div>
           </div>
-          <div className='header-nav-bar'>
-            <div className='header-prof-link'>
-              <a href={`/#/u/${this.props.currentUser.id}`}>Profile Test</a>
+          <div className='header-nav'>
+            <div className='header-nav-links'>
+              <div className='header-prof-link'>
+                <div className='header-border-div'>
+                  <a href={`/#/u/${this.props.currentUser.id}`}>Demo</a>
+                </div>
+              </div>
+
+              <div className='header-feed-link'>
+                  <a href={`/`}>Home</a>
+              </div>
             </div>
-            <div className='header-feed-link'>
-              <a href={`/`}>Home Test</a>
+            <div className='header-nav-notifs'>
+              <div className='header-nav-notif-el'>
+                <img className='nav-bar-logo' src={f_req_logo} />
+              </div>
+              <div className='header-nav-notif-el'>
+                <img className='nav-bar-logo' src={f_mess_logo} />
+              </div>
+              <div className='header-nav-notif-el'>
+                <img className='nav-bar-logo' src={f_notif_logo} />
+              </div>
             </div>
-          </div>
-          <div className='header-notifications'>
-            <div className='request-notifications'></div>
-            <div className='notifications'></div>
-          </div>
-          <div className='logout-div'>
-            <button className='logout-button' onClick={this.props.logout}>Log Out</button>
+            <div className='logout-div'>
+              <button className='logout-button' onClick={this.props.logout}>Log Out</button>
+            </div>
           </div>
         </div>
       </div>
