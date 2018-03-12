@@ -9,7 +9,7 @@
 User.destroy_all
 Profile.destroy_all
 
-User.create!(email: 'guest@demo.com', password: 'starwars', first_name: 'guest', last_name: 'demo', gender: 'male')
-User.create!(email: 'grace@cutie.pie', password: 'starwars', first_name: 'Grace', last_name: 'Korn', gender: 'female')
-User.create!(email: 'dan@sky.net', password: 'starwars', first_name: 'Dan', last_name: 'Crabs', gender: 'male')
-User.create!(email: 'zed@ninjas.com', password: 'starwars', first_name: 'Zed', last_name: 'Nope', gender: 'male')
+User.create!(email: 'guest@demo.com', password: 'starwars', first_name: 'guest', last_name: 'demo', gender: 'male', birthday: '1970-02-07')
+User.create!(email: 'grace@cutie.pie', password: 'starwars', first_name: 'Grace', last_name: 'Korn', gender: 'female', birthday: '1990-03-08')
+User.create!(email: 'dan@sky.net', password: 'starwars', first_name: 'Dan', last_name: 'Crabs', gender: 'male', birthday: '1991-09-16')
+User.create!(email: 'zed@ninjas.com', password: 'starwars', first_name: 'Zed', last_name: 'Nope', gender: 'male', birthday: '1980-08-13')
