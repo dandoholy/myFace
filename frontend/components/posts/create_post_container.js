@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import React from 'react';
 
 import PostForm from './post_form';
 import {
@@ -20,9 +21,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     action: (post) => dispatch(createPost(post)),
     removePost: (id) => dispatch(removePost(id)),
-    openModal: () => dispatch(openModal('create_post')),
+    openModal: () => dispatch(openModal(<CreatePostForm />)),
     closeModal: () => dispatch(closeModal()),
   };
 };
 
+const CreatePostForm = connect(mapStateToProps, mapDispatchToProps)(PostForm);
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

@@ -9,7 +9,8 @@ class Api::ProfilesController < ApplicationController
   end
 
   def update
-    @profile = User.find(params[:id]).profile
+    debugger
+    @profile = Profile.find_by(user_id: params[:user_id])
     if @profile.update_attributes(profile_params)
       render 'api/profiles/show'
     else
@@ -24,6 +25,6 @@ class Api::ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:nickname, :address, :phone_number, :work, :college)
+    params.require(:profile).permit(:id, :nickname, :address, :phone_number, :work, :college)
   end
 end

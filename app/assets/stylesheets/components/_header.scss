@@ -2,6 +2,8 @@
   background: #3B5998;
   width: 100%;
   height: 42px;
+  display: flex;
+  justify-content: center;
 }
 
 .header div {
@@ -9,10 +11,14 @@
 }
 
 .header-content {
-  max-width: 1012px;
+  width: 1012px;
   margin: 0 2%;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo-and-search {
+  width: 662px;
 }
 
 .header-logo-div {
@@ -21,10 +27,11 @@
   margin-top: 2.5px;
   border-radius: 3px;
   overflow: hidden;
+  margin-right: 9px;
 }
 
 .header-search-div {
-  width: 40%;
+  width: 630px;
 }
 
 .header-search-bar {

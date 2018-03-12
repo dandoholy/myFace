@@ -17,7 +17,7 @@ class PostIndex extends React.Component {
     const { posts } = this.props;
     return (
       <div className='post-index-div'>
-        <Modal />
+
         <CreatePostForm />
         <ol className='post-index-list'>
           {posts.map(post => <PostIndexItem key={post.id} post={post} />)}

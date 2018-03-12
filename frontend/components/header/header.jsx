@@ -17,17 +17,19 @@ class Header extends React.Component {
     return (
       <div className='header'>
         <div className='header-content'>
-          <div className='header-logo-div'>
-            <a href='/'><img className='header-logo' src={mf_logo}/></a>
-          </div>
-          <div className='header-search-div'>
-            <input
-              className='header-search-bar'
-              onChange={this.handleInput}
-              value={this.state.inputVal}
-              placeholder='Search' />
-            <div className='header-search-icon'>
-              <i className="material-icons">search</i>
+          <div className='logo-and-search'>
+            <div className='header-logo-div'>
+              <a href='/'><img className='header-logo' src={mf_logo}/></a>
+            </div>
+            <div className='header-search-div'>
+              <input
+                className='header-search-bar'
+                onChange={this.handleInput}
+                value={this.state.inputVal}
+                placeholder='Search' />
+              <div className='header-search-icon'>
+                <i className="material-icons">search</i>
+              </div>
             </div>
           </div>
           <div className='header-nav'>

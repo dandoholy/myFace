@@ -14,9 +14,10 @@ export const fetchUser = id => {
   })
 };
 
-export const updateProfile = profile => {
+export const updateProfile = (profile, userId) => {
   return $.ajax({
     method: 'patch',
-    url: `/api/profiles/${id}`
+    url: `/api/profiles/${userId}`,
+    data: { profile }
   })
 }

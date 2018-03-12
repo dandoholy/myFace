@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 
 import sessionErrorsReducer from './session_errors_reducer';
-import profileErrorsReducer from './profiles_errors_reducer';
+import profilesErrorsReducer from './profiles_errors_reducer';
 import postsErrorsReducer from './posts_errors_reducer';
 
 const errorsReducer = combineReducers(
   {
     session: sessionErrorsReducer,
-    profile: profileErrorsReducer,
+    profile: profilesErrorsReducer,
     posts: postsErrorsReducer,
-    
+
   }
 );
 

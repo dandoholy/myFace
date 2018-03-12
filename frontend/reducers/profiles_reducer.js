@@ -7,7 +7,7 @@ const profilesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_PROFILE:
-      return merge( {}, { [action.profile.id]: action.profile});
+      return merge( {}, { [action.profile.id]: action.profile });
     default:
       return state;
   }

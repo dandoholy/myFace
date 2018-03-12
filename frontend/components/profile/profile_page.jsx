@@ -1,5 +1,8 @@
 import React from 'react';
-// this.props.currentUserId
+import { Link } from 'react-router-dom';
+
+import Modal from '../modal/modal';
+
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
@@ -9,21 +12,23 @@ class ProfilePage extends React.Component {
       address: '',
       phone_number: '',
       work: '',
-      college: ''
+      college: '',
+      imageFile: null,
+      imageUrl: null
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
-  handleSubmit (e) {
-    e.preventDefault();
-    const post = merge({}, this.state);
-    // this.props.updateProfile(post);
-  }
+  updateFile (e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, imageFile: file});
 
-  update (field) {
-    return e => {
-      this.setState({ [field]: e.target.value });
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
     }
   }
 
@@ -32,15 +37,19 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const profile = this.props.profile;
+    const { profile, userId } = this.props;
 
+    // debugger
     if (!profile) { return null; }
-
     return (
       <div className='total-profile-div'>
         <div className='profile-header-div'>
           <div className='profile-cover-div'></div>
           <div className='profile-nav-bar'></div>
+          <div className='profile-pic-div'>
+            <input type='file' onChange={this.updateFile}></input>
+            <img src={this.state.imageUrl} />
+          </div>
         </div>
         <div className='profile-main-div'>
           <div className='profile-posts-div'>
@@ -52,11 +61,15 @@ class ProfilePage extends React.Component {
           <div className='profile-info-div'>
             <div className='profile-info-details-div'>
               <div className='profile-details-content'>
-                <div className='profile-detail'>Nickname: {profile.nickname || "click here to add" }</div>
-                <div className='profile-detail'>Address: {profile.address || "click here to add" }</div>
-                <div className='profile-detail'>Phone: {profile.phone_number || "click here to add" }</div>
-                <div className='profile-detail'>Work: {profile.work || "click here to add" }</div>
-                <div className='profile-detail'>College: {profile.college || "click here to add" }</div>
+                <div className='edit-button-div'>
+                  <button onClick={this.props.openModal}><i className="material-icons">mode_edit</i></button>
+                </div>
+                <div className='profile-detail'>Also goes by {profile.nickname ||
+                    <a href='#'>"click here to add"<i className="material-icons">mode_edit</i></a> }</div>
+                <div className='profile-detail'>Lives at {profile.address || "click here to add" }</div>
+                <div className='profile-detail'>Can be reached at {profile.phone_number || "click here to add" }</div>
+                <div className='profile-detail'>Works at {profile.work || "click here to add" }</div>
+                <div className='profile-detail'>Went to school at {profile.college || "click here to add" }</div>
               </div>
             </div>
             <div className='profile-info-photos-div'>Photos</div>

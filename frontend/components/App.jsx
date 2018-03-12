@@ -13,12 +13,13 @@ import Modal from './modal/modal';
 const App = () => {
   return (
     <div>
+      <Modal />
       <div className='logged-out-content'>
         <AuthRoute path='/' component={LoggedOutHeader} />
         <AuthRoute path='/' component={LoggedOutBody} />
       </div>
       <ProtectedRoute path='/' component={HeaderContainer} />
-      <ProtectedRoute path='/' component={FeedPage} />
+      <ProtectedRoute exact path='/' component={FeedPage} />
       <ProtectedRoute path='/u/:userId' component={ProfilePageContainer} />
     </div>
   );
