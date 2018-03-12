@@ -1,8 +1,30 @@
 import React from 'react';
-
+// this.props.currentUserId
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user_id: '',
+      nickname: '',
+      address: '',
+      phone_number: '',
+      work: '',
+      college: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
+  }
+
+  handleSubmit (e) {
+    e.preventDefault();
+    const post = merge({}, this.state);
+    // this.props.updateProfile(post);
+  }
+
+  update (field) {
+    return e => {
+      this.setState({ [field]: e.target.value });
+    }
   }
 
   componentDidMount() {

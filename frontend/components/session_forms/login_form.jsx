@@ -13,7 +13,7 @@ class LoginForm extends React.Component {
 
   update(field){
     return (e) => {
-      this.setState({ [field]: e.target.value })
+      this.setState({ [field]: e.target.value });
     };
   }
 

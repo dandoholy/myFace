@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 
-import profileReducer from './profile_reducer';
+import profilesReducer from './profiles_reducer';
+import postsReducer from './posts_reducer';
 
 export default combineReducers(
   {
-    profile: profileReducer,
+    profiles: profilesReducer,
+    posts: postsReducer,
 
   }
 );

@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import { RECEIVE_PROFILE_ERRORS, RECEIVE_PROFILE } from '../actions/profile_actions';
 
-const profileErrorsReducer = (state = [], action) => {
+const profilesErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROFILE_ERRORS:
@@ -13,4 +13,4 @@ const profileErrorsReducer = (state = [], action) => {
   }
 };
 
-export default profileErrorsReducer;
+export default profilesErrorsReducer;

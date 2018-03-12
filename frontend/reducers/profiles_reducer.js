@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 
 import { RECEIVE_PROFILE } from '../actions/profile_actions';
 
-const profileReducer = (state = {}, action) => {
+const profilesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_PROFILE:
@@ -14,6 +14,7 @@ const profileReducer = (state = {}, action) => {
 };
 
 const byUserId = (state = {}, action) => {
+  Object.freeze(state);
   switch(action.type) {
     case RECEIVE_PROFILE:
       return merge({}, state, { [action.profile.user_id]: action.profile.id });
@@ -23,6 +24,6 @@ const byUserId = (state = {}, action) => {
 }
 
 export default combineReducers({
-  byId: profileReducer,
+  byId: profilesReducer,
   byUserId
 });

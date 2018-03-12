@@ -50,4 +50,8 @@ class User < ApplicationRecord
   def create_profile
     Profile.create!(user_id: self.id)
   end
+
+  def full_name
+    self.first_name.capitalize + ' ' + self.last_name.capitalize
+  end
 end

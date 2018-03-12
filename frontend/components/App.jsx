@@ -6,6 +6,8 @@ import LoggedOutHeader from './logged_out_splash/logged_out_header';
 import LoggedOutBody from './logged_out_splash/logged_out_body';
 import HeaderContainer from './header/header_container';
 import ProfilePageContainer from './profile/profile_page_container';
+import CreatePostForm from './posts/create_post_container';
+import PostIndexContainer from './posts/feed_post_index_container';
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
       <ProtectedRoute path='/' component={HeaderContainer} />
       <ProtectedRoute path='/' component={FeedPage} />
       <ProtectedRoute path='/u/:userId' component={ProfilePageContainer} />
+      <ProtectedRoute exact path= '/' component={CreatePostForm} />
+      <ProtectedRoute exact path= '/' component={PostIndexContainer} />
     </div>
   );
 }
