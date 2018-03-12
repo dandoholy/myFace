@@ -1,8 +1,6 @@
 import React from 'react';
 import { merge } from 'lodash';
 
-// this.props.currentUserId
-// this.props.wallId
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +23,7 @@ class PostForm extends React.Component {
 
   render () {
     return (
-      <div className='total-post-form-div'>
+      <div className='total-post-form-div' onClick={this.props.openModal}>
         <div className='post-form-header'></div>
         <div className='post-form-main'>
           <div className='post-form-body'>

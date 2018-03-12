@@ -8,6 +8,7 @@ import HeaderContainer from './header/header_container';
 import ProfilePageContainer from './profile/profile_page_container';
 import CreatePostForm from './posts/create_post_container';
 import PostIndexContainer from './posts/feed_post_index_container';
+import Modal from './modal/modal';
 
 const App = () => {
   return (
@@ -19,10 +20,12 @@ const App = () => {
       <ProtectedRoute path='/' component={HeaderContainer} />
       <ProtectedRoute path='/' component={FeedPage} />
       <ProtectedRoute path='/u/:userId' component={ProfilePageContainer} />
-      <ProtectedRoute exact path= '/' component={CreatePostForm} />
-      <ProtectedRoute exact path= '/' component={PostIndexContainer} />
     </div>
   );
 }
 
 export default App;
+
+
+// <ProtectedRoute exact path= '/' component={CreatePostForm} />
+// <ProtectedRoute exact path= '/' component={PostIndexContainer} />

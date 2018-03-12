@@ -4,6 +4,7 @@ import PostForm from './post_form';
 import {
   createPost, updatePost, removePost, fetchPost, fetchAllPosts
 } from '../../actions/post_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -19,6 +20,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     action: (post) => dispatch(createPost(post)),
     removePost: (id) => dispatch(removePost(id)),
+    openModal: () => dispatch(openModal('create_post')),
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

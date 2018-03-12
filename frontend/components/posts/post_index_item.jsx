@@ -27,11 +27,11 @@ const PostIndexItem = ( { post } ) => {
 
   return (
     <li className="post-index-item">
-      <span>{post.author}</span>
-      <br></br>
-      <span>{dateStr}</span>
-      <br></br>
-      <span>{post.body}</span>
+      <div className='post-author-div'>
+        <Link to={`/u/${post.author_id}`}>{post.author}</Link>
+        </div>
+      <div className='post-timestamp-div'>{dateStr}</div>
+      <div className='post-body-div'>{post.body}</div>
     </li>
   );
 }
