@@ -7,6 +7,8 @@ import {
 const postsErrorsReducer = (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
+    case RECEIVE_POST_ERRORS:
+      return action.errors;
     case RECEIVE_POST:
     case RECEIVE_ALL_POSTS:
     case DELETE_POST:

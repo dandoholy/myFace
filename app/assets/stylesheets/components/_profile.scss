@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .total-profile-div {
   margin: 0 auto;
   width: 851px;
@@ -15,14 +19,47 @@
   width: inherit;
   height: 315px;
   background-color: lightblue;
+  position: relative;
+}
+
+.profile-cover-pic {
+  height: inherit;
+  position: absolute;
+}
+
+.cover-pic {
+  // height: 315px;
+  // width: 851px;
+  // object-fit: contain;
+  position: absolute;
+  z-index: -1;
+}
+
+.cover-pic-uploader {
+  z-index: 1;
+}
+
+.profile-name {
+  position: absolute;
+  bottom: 20%;
+
 }
 
 .profile-nav-bar {
-  width: inherit;
+  width: 649px;
   height: 43px;
+  padding-left: 201px;
   background-color: pink;
 }
 
+.profile-nav-link{
+  width: auto;
+  height: 42px;
+  padding: 0 17px;
+  vertical-align: middle;
+  text-align: center;
+  background: cyan;
+}
 
 
 .profile-info-div {
@@ -58,7 +95,6 @@
 
 .profile-details-content {
   width: 297px;
-  margin-top: 12px;
   padding-left: 4px;
 }
 
@@ -66,10 +102,15 @@
   position: relative;
   width: 18px;
   height: 18px;
+  left: 280px;
+  bottom: 118px;
 }
 
 .material-icons.md-12 {
   font-size: 12px;
+  &:hover {
+    background: rgb(65, 90, 147);
+  }
 }
 
 .profile-detail {

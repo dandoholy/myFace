@@ -9,5 +9,5 @@ class Post < ApplicationRecord
     class_name: :Profile,
     foreign_key: :wall_id,
     optional: true
-
+  has_many :comments
 end

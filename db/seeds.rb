@@ -9,6 +9,11 @@
 User.destroy_all
 Profile.destroy_all
 Post.destroy_all
+Photo.destroy_all
+Comment.destroy_all
+
+Photo.create!(image: "http://s3.amazonaws.com/myface-development/photos/images/000/000/003/original/defaultcover.jpg?1520975647")
+Photo.create!(image: "http://s3.amazonaws.com/myface-development/photos/images/000/000/004/original/defaultphotomale.jpg?1520975671")
 
 User.create!(email: 'guest@demo.com', password: 'starwars', first_name: 'guest', last_name: 'demo', gender: 'male', birthday: '1970-02-07')
 User.create!(email: 'grace@cutie.pie', password: 'starwars', first_name: 'Grace', last_name: 'Korn', gender: 'female', birthday: '1990-03-08')

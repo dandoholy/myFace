@@ -13,7 +13,7 @@ class Api::ProfilesController < ApplicationController
     if @profile.update_attributes(profile_params)
       render 'api/profiles/show'
     else
-      render json: @profile.errors.full_messages, status: 422
+      render json: {errors: @profile.errors.full_messages}, status: 422
     end
   end
 
@@ -24,6 +24,6 @@ class Api::ProfilesController < ApplicationController
 
   private
   def profile_params
-    params.require(:profile).permit(:id, :nickname, :address, :phone_number, :work, :college)
+    params.require(:profile).permit(:id, :nickname, :address, :phone_number, :work, :college, :banner_pic, :profile_pic)
   end
 end

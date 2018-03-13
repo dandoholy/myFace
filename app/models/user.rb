@@ -13,6 +13,8 @@ class User < ApplicationRecord
     foreign_key: :user_id
   has_many :posts,
     foreign_key: :author_id
+  has_many :comments,
+    foreign_key: :author_id
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -48,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def create_profile
-    Profile.create!(user_id: self.id)
+    Profile.create!(user_id: self.id, banner_pic_id: Photo.first.id, profile_pic_id: Photo.second.id)
   end
 
   def full_name

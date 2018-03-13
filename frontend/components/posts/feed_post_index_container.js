@@ -5,8 +5,10 @@ import { fetchAllPosts } from '../../actions/post_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const posts = Object.values(state.entities.posts);
+  const users = Object.values(state.entities.users);
   return {
-    posts
+    posts,
+    users
   };
 };
 

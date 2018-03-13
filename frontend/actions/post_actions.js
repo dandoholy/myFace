@@ -19,10 +19,12 @@ export const receivePost = post => {
   };
 };
 
-export const receiveAllPosts = posts => {
+export const receiveAllPosts = payload => {
   return {
     type: RECEIVE_ALL_POSTS,
-    posts
+    posts: payload.posts,
+    users: payload.users,
+    comments: payload.comments
   };
 };
 

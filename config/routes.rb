@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :profiles, only: [:show, :create]
     resources :profiles, only: :update, param: :user_id
     resources :posts, except: [:new, :edit]
+    resources :comments, except: [:new, :edit]
     resources :photos, only: [:create]
   end
 

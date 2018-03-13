@@ -1,22 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Modal from '../modal/modal';
+import WallPostForm from '../posts/wall_post_container';
 
 class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: '',
-      nickname: '',
-      address: '',
-      phone_number: '',
-      work: '',
-      college: '',
       imageFile: null,
       imageUrl: null
     };
     this.updateFile = this.updateFile.bind(this);
+    this.uploadPhoto = this.uploadPhoto.bind(this);
   }
 
   updateFile (e) {
@@ -32,6 +28,13 @@ class ProfilePage extends React.Component {
     }
   }
 
+  uploadPhoto (e) {
+    const file = this.state.imageFile;
+    const formData = new FormData();
+    if (file) formData.append("profile[banner_pic]", file);
+    this.props.updateProfilePhoto(formData);
+  }
+
   componentDidMount() {
     this.props.fetchProfile(this.props.userId);
   }
@@ -45,24 +48,28 @@ class ProfilePage extends React.Component {
         <div className='profile-header-div'>
           <div className='profile-cover-div'>
             <div className='profile-cover-pic'>
+              <img className='cover-pic' src={this.state.imageUrl} />
               <div className='cover-pic-uploader'>
-                <form >
-                  <input type='file' onChange={this.updateFile}></input>
-                  <img src={this.state.imageUrl} />
-                  <input type='submit' value='Update Cover Photo' />
-                </form>
+                <input type='file' onChange={this.updateFile}></input>
+                <button onClick={this.uploadPhoto}>Update Cover Photo</button>
               </div>
             </div>
             <div className='profile-name'>{this.props.fullName}</div>
           </div>
-          <div className='profile-nav-bar'></div>
+          <div className='profile-nav-bar'>
+            <NavLink className='profile-nav-link' to={`u/${userId}`} exact>Timeline</NavLink>
+            <NavLink className='profile-nav-link' to={`u/${userId}/friends`}>Friends</NavLink>
+            <NavLink className='profile-nav-link' to={`u/${userId}/photos`}>Photos</NavLink>
+          </div>
           <div className='profile-pic-div'>
 
           </div>
         </div>
         <div className='profile-main-div'>
           <div className='profile-posts-div'>
-            <div className='profile-post-form-div'></div>
+            <div className='profile-post-form-div'>
+              <WallPostForm />
+            </div>
             <div className='profile-posts-div'>
               <ol className='profile-posts-list'></ol>
             </div>
@@ -74,9 +81,7 @@ class ProfilePage extends React.Component {
               <span className='intro-text'>Intro</span>
             </div>
             <div className='profile-info-details-div'>
-              <div className='edit-button-div'>
-                <button onClick={this.props.openModal}><i className="material-icons md-12">mode_edit</i></button>
-              </div>
+
               <div className='profile-details-content'>
 
 
@@ -109,6 +114,9 @@ class ProfilePage extends React.Component {
                   Went to school at {profile.college ||
                     <span className='psuedo-link' onClick={this.props.openModal}> -click here to add- </span> }
                 </div>
+              </div>
+              <div className='edit-button-div'>
+                <button onClick={this.props.openModal}><i className="material-icons md-12">mode_edit</i></button>
               </div>
             </div>
 

@@ -1,5 +1,7 @@
 class Photo < ApplicationRecord
-  has_attached_file :image, default_url: "missing.png"
+  has_attached_file :image,
+    styles: {cover: "851x315>", profile: "168x168>", thumb: "40x40>", mini: "32x32>", icon: "24x24>"},
+    default_url: "missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_one :pp_profile,

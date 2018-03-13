@@ -30,3 +30,12 @@ export const updateProfile = (profile, userId) => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
+
+export const updateProfilePhoto = (profile, userId) => dispatch => {
+  return ProfileAPIUtil.updateProfilePhoto(profile, userId).then(
+    profile => dispatch(receiveProfile(profile)),
+    errors => {
+      dispatch(receiveErrors(errors.responseJSON))
+    }
+  );
+};
