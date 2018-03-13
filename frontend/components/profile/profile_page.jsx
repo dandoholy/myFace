@@ -39,16 +39,25 @@ class ProfilePage extends React.Component {
   render() {
     const { profile, userId } = this.props;
 
-    // debugger
     if (!profile) { return null; }
     return (
       <div className='total-profile-div'>
         <div className='profile-header-div'>
-          <div className='profile-cover-div'></div>
+          <div className='profile-cover-div'>
+            <div className='profile-cover-pic'>
+              <div className='cover-pic-uploader'>
+                <form >
+                  <input type='file' onChange={this.updateFile}></input>
+                  <img src={this.state.imageUrl} />
+                  <input type='submit' value='Update Cover Photo' />
+                </form>
+              </div>
+            </div>
+            <div className='profile-name'>{this.props.fullName}</div>
+          </div>
           <div className='profile-nav-bar'></div>
           <div className='profile-pic-div'>
-            <input type='file' onChange={this.updateFile}></input>
-            <img src={this.state.imageUrl} />
+
           </div>
         </div>
         <div className='profile-main-div'>
@@ -58,22 +67,51 @@ class ProfilePage extends React.Component {
               <ol className='profile-posts-list'></ol>
             </div>
           </div>
+
           <div className='profile-info-div'>
+            <div className='intro-box'>
+              <i className="material-icons intro-icon">account_circle</i>
+              <span className='intro-text'>Intro</span>
+            </div>
             <div className='profile-info-details-div'>
+              <div className='edit-button-div'>
+                <button onClick={this.props.openModal}><i className="material-icons md-12">mode_edit</i></button>
+              </div>
               <div className='profile-details-content'>
-                <div className='edit-button-div'>
-                  <button onClick={this.props.openModal}><i className="material-icons">mode_edit</i></button>
+
+
+                <div className='profile-detail'>
+                  <span className='profile-detail-icon'><i className="material-icons md-14">fingerprint</i></span>
+                  <span className='profile-detail-text'>
+                    Also goes by {profile.nickname ||
+                      <span className='psuedo-link' onClick={this.props.openModal}> -click here to add- </span> }
+                  </span>
                 </div>
-                <div className='profile-detail'>Also goes by {profile.nickname ||
-                    <a href='#'>"click here to add"<i className="material-icons">mode_edit</i></a> }</div>
-                <div className='profile-detail'>Lives at {profile.address || "click here to add" }</div>
-                <div className='profile-detail'>Can be reached at {profile.phone_number || "click here to add" }</div>
-                <div className='profile-detail'>Works at {profile.work || "click here to add" }</div>
-                <div className='profile-detail'>Went to school at {profile.college || "click here to add" }</div>
+                <div className='profile-detail'>
+                  <span className='profile-detail-icon'><i className="material-icons md-14">home</i></span>
+                  <span className='profile-detail-text'>
+                    Lives at {profile.address ||
+                      <span className='psuedo-link' onClick={this.props.openModal}> -click here to add- </span> }
+                  </span>
+                </div>
+                <div className='profile-detail'>
+                  <span className='profile-detail-icon'><i className="material-icons md-14">phone</i></span>
+                  Can be reached at {profile.phone_number ||
+                    <span className='psuedo-link' onClick={this.props.openModal}> -click here to add- </span> }
+                </div>
+                <div className='profile-detail'>
+                  <span className='profile-detail-icon'><i className="material-icons md-14">work</i></span>
+                  Works at {profile.work ||
+                    <span className='psuedo-link' onClick={this.props.openModal}> -click here to add- </span> }
+                </div>
+                <div className='profile-detail'>
+                  <span className='profile-detail-icon'><i className="material-icons md-14">school</i></span>
+                  Went to school at {profile.college ||
+                    <span className='psuedo-link' onClick={this.props.openModal}> -click here to add- </span> }
+                </div>
               </div>
             </div>
-            <div className='profile-info-photos-div'>Photos</div>
-            <div className='profile-info-friends-div'>Friends</div>
+
           </div>
         </div>
       </div>
@@ -82,5 +120,8 @@ class ProfilePage extends React.Component {
   }
 
 }
+
+// <div className='profile-info-photos-div'>Photos</div>
+// <div className='profile-info-friends-div'>Friends</div>
 
 export default ProfilePage;

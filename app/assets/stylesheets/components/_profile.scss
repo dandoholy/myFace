@@ -1,0 +1,168 @@
+.total-profile-div {
+  margin: 0 auto;
+  width: 851px;
+  height: 100%;
+  background-color: white;
+}
+
+.profile-header-div {
+  width: inherit;
+  height: 359px;
+  background-color: lightgreen;
+}
+
+.profile-cover-div {
+  width: inherit;
+  height: 315px;
+  background-color: lightblue;
+}
+
+.profile-nav-bar {
+  width: inherit;
+  height: 43px;
+  background-color: pink;
+}
+
+
+
+.profile-info-div {
+  width: 321px;
+  border: 1px solid rgb(208, 209, 213);
+}
+
+.intro-box {
+  width: 321px;
+  height: 24px;
+  margin: 0 12px;
+  padding: 12px 0 4px 4px;
+  font-family: 'SF Optimized', system-ui;
+  font-size: 16px;
+  font-weight: 400;
+  vertical-align: center;
+  display: flex;
+}
+
+.intro-icon {
+
+}
+
+.intro-text {
+  margin: 2.5px 0 0 4px;
+}
+
+.profile-info-details-div {
+  width: 297px;
+  margin: 4px 12px 12px 12px;
+  border-top: 1px solid rgb(233, 235, 238);
+}
+
+.profile-details-content {
+  width: 297px;
+  margin-top: 12px;
+  padding-left: 4px;
+}
+
+.edit-button-div {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.material-icons.md-12 {
+  font-size: 12px;
+}
+
+.profile-detail {
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  height: 16px;
+  padding: 4px 0;
+  vertical-align: middle;
+}
+
+.material-icons.md-14 {
+  font-size: 16px;
+  color: lightblue;
+  margin-top: 8px;
+}
+
+.profile-detail-icon {
+  margin-right: 8px;
+  height: 16px;
+  vertical-align: bottom;
+}
+
+.profile-detail-text {
+  height: 16px;
+  // margin-bottom: 4px;
+}
+
+
+// EDIT PROFILE FORM
+.edit-form-div {
+  padding: 40px;
+  background: rgb(246, 247, 249);
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.profile-row {
+  width: 558px;
+}
+
+.edit-profile-div {
+  width: 242px;
+  height: 28px;
+  // margin: 0 auto;
+  color: rgb(29, 33, 41);
+  font-size: 12px;
+  border: 1px solid rgb(211, 214, 219);
+  display: inline-block;
+  justify-content: space-between;
+}
+
+.edit-profile-submit-div {
+  width: 558px;
+  height: 28px;
+  padding-top: 10px;
+  border-top: 1px solid rgb(221, 223, 226);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.edit-prof-label {
+  width: 180px;
+  height: 18px;
+  margin-right: 18px;
+  text-align: right;
+  display: inline-block;
+}
+
+.profile-input {
+  width: 242px;
+  height: 16px;
+  padding: 6px 8px;
+  display: inline-block;
+}
+
+.save-button {
+  width: 83px;
+  height: 26px;
+  color: white;
+  background: rgb(54, 88, 153);
+  padding: 0 10px;
+  border: 1px solid rgb(66, 103, 178);
+  border-radius: 2px;
+}
+
+.cancel-button {
+  width: 40px;
+  height: 26px;
+  color: rgb(75, 79, 86);
+  background: rgb(246, 247, 249);
+  padding: 0 10px;
+  border: 1px solid rgb(206, 208, 212);
+  border-radius: 2px;
+}
