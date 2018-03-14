@@ -10,4 +10,16 @@ const usersReducer = (state = {}, action) => {
   }
 };
 
+const byProfileId = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_ALL_POSTS:
+      let newState = {}
+      action.users.forEach(user => {
+        newState[user.profileId] = user.id
+      })
+
+      return merge({}, state, newState)
+  }
+}
+
 export default usersReducer;

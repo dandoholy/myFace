@@ -22,18 +22,17 @@ class PostForm extends React.Component {
   }
 
   render () {
+    const currentUser = this.props.currentUser;
     return (
       <div className='total-post-form-div'>
         <div className='post-form-header'></div>
         <div className='post-form-main'>
           <div className='post-form-body'>
-            <div className='post-form-pic-div'></div>
-            <div className='post-form-textarea-div'>
-              <form onSubmit={this.handleSubmit} className='post-form-form'>
-                <textarea onChange={this.update('body')} value={this.state.body} placeholder={`What's on your mind`}></textarea>
-                <input type='submit' value='Post' />
-              </form>
-            </div>
+            <img src={currentUser.miniPic} />
+            <form onSubmit={this.handleSubmit} className='post-form-form'>
+              <textarea onChange={this.update('body')} value={this.state.body} placeholder={`What's on your mind, ${currentUser.name}?`}></textarea>
+              <input className='post-button' type='submit' value='Post' />
+            </form>
           </div>
           <div className='post-form-footer'>
             <div className='post-form-pic-upload-div'></div>

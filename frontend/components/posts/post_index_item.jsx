@@ -52,13 +52,20 @@ class PostIndexItem extends React.Component {
     const { post, comments, users } = this.props;
     const postComments = comments.filter(comment => comment.post_id === post.id);
     const dateStr = this.dateStr();
+    // const postAuthorHeader = (post.wall_id) ? <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>
+    //   <i className="material-icons">play_arrow</i>
+    //   <Link to={`/u/${post.wall_id}`}>{users[post.author_id].full_name}</Link>
+    //   : <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>;
     return (
       <li className="post-index-item">
         <div className='post-item-div'>
           <div className='post-author-div'>
-            <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>
+            <img src={users[post.author_id].miniPic}/>
+            <div className='author-timestamp'>
+              <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>
+              <div className='post-timestamp-div'>{dateStr}</div>
+            </div>
           </div>
-          <div className='post-timestamp-div'>{dateStr}</div>
           <div className='post-body-div'>{post.body}</div>
         </div>
         <div className='comments-index-div'>

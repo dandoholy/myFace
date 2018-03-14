@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    currentUser: state.session.currentUser,
     defaultPost: {
       author_id: state.session.currentUser.id,
       body: '',

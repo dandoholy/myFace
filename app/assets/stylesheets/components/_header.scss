@@ -71,7 +71,7 @@
   color: white;
   font-family: system-ui;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   align-items: center;
 }
 
@@ -101,6 +101,12 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+.header-border-div img {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
 }
 
 .header-nav-notifs {

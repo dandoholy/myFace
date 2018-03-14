@@ -1,27 +1,47 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+import CoverPhoto from './cover_photo';
 
 class ProfileHeader extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      coverHovered: false,
+      profileHovered: false,
+    }
+  }
+
+  handleMouseEnter(field) {
+    return () => {
+      if (this.props.user.id === this.props.currentUser.id)
+        this.setState({ [`${field}Hovered`]: true });
+    }
+  }
+
+  handleMouseLeave(field) {
+    return () => {
+      if (this.props.user.id === this.props.currentUser.id)
+        this.setState({ [`${field}Hovered`]: false });
+    }
   }
 
   render() {
-    <div className='profile-header-div'>
-      <div className='profile-cover-div'>
-        <div className='profile-cover-pic'>
-          <img src={this.state.imageUrl} />
-          <div className='cover-pic-uploader'>
-            <input type='file' onChange={this.updateFile}></input>
-            <input type='submit' value='Update Cover Photo' />
-          </div>
+    const { profile, userId, fullName } = this.props;
+    return (
+      <div>
+        <div className='profile-cover-photo-div'>
+          <CoverPhoto profile={profile} fullName={fullName} />
         </div>
-        <div className='profile-name'>{this.props.fullName}</div>
+        <div className='profile-nav-bar'>
+          <NavLink className='profile-nav-link' to={`/u/${userId}`} exact>Timeline</NavLink>
+          <NavLink className='profile-nav-link' to={`/u/${userId}/friends`}>Friends</NavLink>
+          <NavLink className='profile-nav-link' to={`/u/${userId}/photos`}>Photos</NavLink>
+        </div>
+        <div className='profile-pic-div'>
+        </div>
       </div>
-      <div className='profile-nav-bar'></div>
-      <div className='profile-pic-div'>
-
-      </div>
-    </div>
+    );
   }
 }
 

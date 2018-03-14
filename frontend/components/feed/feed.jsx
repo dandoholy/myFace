@@ -5,7 +5,7 @@ import PostIndexContainer from '../posts/feed_post_index_container';
 class FeedPage extends React.Component {
   render () {
     return (
-      <div className='total-feed-page-div'>FEED PAGE GOES HERE
+      <div className='total-feed-page-div'>
         <PostIndexContainer />
       </div>
     );

@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def create_profile
-    Profile.create!(user_id: self.id, banner_pic_id: Photo.first.id, profile_pic_id: Photo.second.id)
+    Profile.create!(user_id: self.id, banner_pic_id: Photo.find_by(image_file_name: "defaultcover.jpg").id, profile_pic_id: Photo.find_by(image_file_name: "defaultphotomale.jpg").id)
   end
 
   def full_name

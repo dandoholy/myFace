@@ -14,6 +14,7 @@ class Header extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.props;
     return (
       <div className='header'>
         <div className='header-content'>
@@ -36,7 +37,7 @@ class Header extends React.Component {
             <div className='header-nav-links'>
               <div className='header-prof-link'>
                 <div className='header-border-div'>
-                  <a href={`/#/u/${this.props.currentUser.id}`}>Demo</a>
+                  <img src={currentUser.iconPic} /> <a href={`/#/u/${currentUser.id}`}>{currentUser.name}</a>
                 </div>
               </div>
 

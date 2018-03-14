@@ -16,6 +16,9 @@ json.users do
       json.partial! '/api/users/user_info', user: author
     end
   end
+  json.set! current_user.id do
+    json.partial! '/api/users/user_info', user: current_user
+  end
 end
 
 json.comments do

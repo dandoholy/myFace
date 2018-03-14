@@ -7,7 +7,7 @@ class Profile < ApplicationRecord
     class_name: :Photo,
     foreign_key: :profile_pic_id,
     optional: true
-  belongs_to :banner_pic,
+  belongs_to :cover_pic,
     class_name: :Photo,
     foreign_key: :banner_pic_id,
     optional: true
@@ -15,25 +15,25 @@ class Profile < ApplicationRecord
     class_name: :posts,
     foreign_key: :wall_id
 
-  def banner_pic=(image)
-    debugger
-    if self.banner_pic.id == Photo.first.id
+  def cover_pic=(image)
+    if self.cover_pic.id == Photo.find_by(image_file_name: "defaultcover.jpg").id
       photo = Photo.create!(image: image)
       super(photo)
     else
-      self.banner_pic.update!(image: image)
+      self.cover_pic.update!(image: image)
     end
-    # check if bannerpic = default
-    # update if so
-    # create new photo and call super if not
-
   end
 
   def profile_pic=(image)
-    # check if bannerpic = default
-    # update if so
-    # create new photo and call super if not
+    if self.profile_pic.id == Photo.find_by(image_file_name: "defaultphotomale.jpg").id
+      photo = Photo.create!(image: image)
+      super(photo)
+    else
+      self.profile_pic.update!(image: image)
+    end
   end
 
 
 end
+
+Photo.where()

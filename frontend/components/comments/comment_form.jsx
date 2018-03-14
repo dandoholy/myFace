@@ -31,12 +31,16 @@ class CommentForm extends React.Component {
   }
 
   render () {
+    const { currentUserId, users } = this.props;
+
     return (
       <div className='total-comment-form-div'>
         <div className='photo-and-comment-form'>
-          <div className='comment-photo-div'></div>
+          <div className='comment-photo-div'>
+            <img src={users[currentUserId].miniPic} />
+          </div>
           <div className='comment-form-div'>
-            <input type='text'
+            <textarea type='text'
               className='comment-input'
               value={this.state.body}
               onKeyPress={this.handleKeyPress}

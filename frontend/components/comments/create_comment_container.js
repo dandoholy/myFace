@@ -7,9 +7,8 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    defaultComment: {
-      body: ''
-    }
+    users: state.entities.users,
+    currentUserId: state.session.currentUser.id,
   }
 }
 
@@ -19,4 +18,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(CommentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

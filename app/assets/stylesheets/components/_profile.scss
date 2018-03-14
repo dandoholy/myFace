@@ -22,27 +22,99 @@
   position: relative;
 }
 
-.profile-cover-pic {
+.profile-cover-pic-container {
   height: inherit;
+  position: relative;
+}
+
+.cover-pic-preview {
+  height: 315px;
+  width: 851px;
+  object-fit: cover;
   position: absolute;
+  z-index: 2;
 }
 
 .cover-pic {
-  // height: 315px;
-  // width: 851px;
-  // object-fit: contain;
+  height: 315px;
+  width: 851px;
+  object-fit: cover;
   position: absolute;
-  z-index: -1;
+}
+
+.not-hovering {
+
+}
+
+.hovering {
+
 }
 
 .cover-pic-uploader {
-  z-index: 1;
+  position: absolute;
+  z-index: 4;
+  top: 13px;
+  left: 20px;
+}
+
+.material-icons.mini {
+  font-size: 16px;
+}
+
+.cover-pic-uploader span {
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.cover-update-buttons {
+  position: relative;
+  top: 289px;
+  left: 666px;
+}
+
+.cover-save-button {
+  width: 84px;
+  height: 26px;
+  background-color: rgb(66, 103, 178);
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  border: 1px solid rgb(66, 103, 178);
+  border-radius: 2px;
+  text-align: center;
+  padding: 0 6px;
+  margin-left: 4px;
+}
+
+.cover-cancel-button {
+  width: 40px;
+  height: 26px;
+  background-color: rgb(246, 247, 249);
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgb(206, 208, 212);
+  border-radius: 2px;
+  text-align: center;
+  padding: 0 6px;
 }
 
 .profile-name {
+  max-width: 275px;
+  word-wrap: break-word;
   position: absolute;
-  bottom: 20%;
-
+  bottom: 18px;
+  left: 200px;
+  z-index: 1;
+  font-family: 'SF Optimized', system-ui;
+  font-size: 24px;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 0 3px rgba(0, 0, 0, .8);
 }
 
 .profile-nav-bar {

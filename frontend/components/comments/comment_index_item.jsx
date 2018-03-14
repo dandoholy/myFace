@@ -20,6 +20,7 @@ class CommentIndexItem extends React.Component {
     let dateStr;
     let minutes;
     let hours;
+    let days;
     if ( timeSince < 60000 ) {
       dateStr = 'Just now';
     } else if (timeSince < 1000*60*60 ) {
@@ -28,12 +29,16 @@ class CommentIndexItem extends React.Component {
       if (minutes > 1) {
         dateStr += 's';
       }
-    } else if (timeSince < 1000*60*60*60) {
-      hours = Math.floor(timeSince/(1000*60*60)%60);
+    } else if (timeSince < 1000*60*60*24) {
+      hours = Math.floor(timeSince/(1000*60*60)%24);
       dateStr = `${hours} hr`;
       if (hours > 1) {
         dateStr += 's';
       }
+    }
+    else if (timeSince < 1000*60*60*24*7) {
+      days = Math.floor(timeSince/(1000*60*60*24)%365);
+      dateStr = `${days} d`;
     } else {
       dateStr = new Date(comment.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     }
@@ -45,11 +50,13 @@ class CommentIndexItem extends React.Component {
     const dateStr = this.dateStr();
     return (
       <li className="comment-index-item">
-        <div className='comment-photo-div'></div>
-        <div className='comment-body'>
-          <a href={`/u/${comment.author_id}`}>{users[comment.author_id].full_name}</a>{comment.body}
+        <div className='comment-photo-div'><img src={users[comment.author_id].miniPic}/></div>
+        <div className='comment-content'>
+          <div className='comment-body'>
+            <span><a href={`/u/${comment.author_id}`}>{users[comment.author_id].full_name} </a>{comment.body}</span>
+          </div>
+            <div className='comment-timestamp-div'>{dateStr}</div>
         </div>
-        <div className='comment-timestamp-div'>{dateStr}</div>
       </li>
     );
   }

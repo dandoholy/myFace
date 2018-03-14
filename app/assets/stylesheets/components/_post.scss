@@ -1,0 +1,102 @@
+ol {
+  list-style: none;
+}
+
+.total-feed-page-div {
+  background-color: rgb(234, 235, 238);
+}
+
+.post-index-div {
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.post-index-item {
+  width: 500px;
+  height: auto;
+  font-family: 'SF Optimized', system-ui;
+  border: 1px solid rgb(29, 33, 41);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.post-item-div {
+  width: 476px;
+  height: auto;
+  padding: 12px 12px 0 12px;
+  background-color: white;
+}
+
+.post-author-div {
+  height: 46px;
+  width: inherit;
+  display: flex;
+  // font-family: 'SF Optimized', system-ui;
+  margin-bottom: 11px;
+}
+
+.author-timestamp a {
+  font-size: 14px;
+  color: rgb(54, 88, 153);
+  font-weight: 500;
+}
+
+.post-timestamp-div {
+  font-size: 12px;
+  color: rgb(144, 148, 156);
+}
+
+.post-author-div img {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+// POST FORM
+
+.total-post-form-div {
+  padding: 10px 0;
+}
+
+.post-form-body {
+  display: flex;
+  background-color: white;
+}
+
+.post-form-body img {
+  height: 40px;
+  width: 40px;
+  margin: 12px 0 0 12px;
+  display: inline-block;
+}
+
+.post-form-body form {
+  display: inline-block;
+  width: 388px;
+  min-height: 71px;
+  height: auto;
+  padding: 23px 48px 13px 12px;
+}
+
+.post-form-body textarea {
+  width: inherit;
+  font-size: 14px;
+  font-family: 'SF Optimized', system-ui;
+  line-height: 18px;
+}
+
+.post-button {
+  background-color: rgb(61, 96, 167);
+  border: 1px solid rgb(54, 88, 153);
+  border-radius: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'SF Optimized', system-ui;
+  line-height: 22px;
+  height: 22px;
+  width: 27px;
+  padding: 0 16px;
+}
