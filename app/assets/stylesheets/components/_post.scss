@@ -12,6 +12,16 @@ ol {
   margin: 0 auto;
 }
 
+.profile-posts-div {
+  width: 518px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.post-form-main {
+  border: 1px solid rgb(208, 209, 213);
+}
+
 .post-index-item {
   width: 500px;
   height: auto;
@@ -85,6 +95,7 @@ ol {
   font-size: 14px;
   font-family: 'SF Optimized', system-ui;
   line-height: 18px;
+  resize: none;
 }
 
 .post-button {

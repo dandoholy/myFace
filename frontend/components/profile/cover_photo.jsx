@@ -41,6 +41,7 @@ class CoverPhoto extends React.Component {
   }
 
   uploadPhoto (picCategory) {
+    // const { submit, picCategory } = this.props;
     return (e) => {
       const file = this.state.imageFile;
       const formData = new FormData();

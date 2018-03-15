@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import CoverPhoto from './cover_photo';
+import ProfilePhoto from './profile_photo';
 
 class ProfileHeader extends React.Component {
   constructor(props) {
@@ -29,16 +30,23 @@ class ProfileHeader extends React.Component {
   render() {
     const { profile, userId, fullName } = this.props;
     return (
-      <div>
+      <div className='profile-header-total'>
         <div className='profile-cover-photo-div'>
           <CoverPhoto profile={profile} fullName={fullName} />
         </div>
         <div className='profile-nav-bar'>
-          <NavLink className='profile-nav-link' to={`/u/${userId}`} exact>Timeline</NavLink>
-          <NavLink className='profile-nav-link' to={`/u/${userId}/friends`}>Friends</NavLink>
-          <NavLink className='profile-nav-link' to={`/u/${userId}/photos`}>Photos</NavLink>
+          <div className='profile-nav-link-div'>
+            <NavLink className='profile-nav-link' to={`/u/${userId}`} exact>Timeline</NavLink>
+          </div>
+          <div className='profile-nav-link-div'>
+            <NavLink className='profile-nav-link' to={`/u/${userId}/friends`}>Friends</NavLink>
+          </div>
+          <div className='profile-nav-link-div'>
+            <NavLink className='profile-nav-link' to={`/u/${userId}/photos`}>Photos</NavLink>
+          </div>
         </div>
         <div className='profile-pic-div'>
+          <ProfilePhoto profile={profile} />
         </div>
       </div>
     );

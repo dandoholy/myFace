@@ -2,11 +2,19 @@
   display: none;
 }
 
+.profile-page-background {
+  background-color: rgb(234, 235, 238);
+}
+
 .total-profile-div {
   margin: 0 auto;
   width: 851px;
   height: 100%;
-  background-color: white;
+  background-color: rgb(234, 235, 238);
+}
+
+.profile-main-div {
+  display: flex;
 }
 
 .profile-header-div {
@@ -121,22 +129,57 @@
   width: 649px;
   height: 43px;
   padding-left: 201px;
-  background-color: pink;
+  background-color: white;
+  display: flex;
 }
 
-.profile-nav-link{
+.profile-header-total {
+  position: relative;
+}
+
+.profile-pic-div {
+  width: 170px;
+  position: absolute;
+  bottom: 17px;
+  left: 14px;
+}
+
+.profile-photo-container {
+  padding: 2px;
+  height: 164px;
+  width: 164px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+}
+
+.profile-nav-link-div {
+  border-left: 1px solid rgb(233, 234, 237);
+}
+
+.profile-nav-link-div:nth-of-type(3) {
+  border-right: 1px solid rgb(233, 234, 237);
+}
+
+.profile-nav-link {
   width: auto;
   height: 42px;
   padding: 0 17px;
   vertical-align: middle;
   text-align: center;
-  background: cyan;
+  color: rgb(54, 88, 153);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'SF Optimized', system-ui;
+  line-height: 43px;
+  height: 42px;
 }
 
 
 .profile-info-div {
   width: 321px;
   border: 1px solid rgb(208, 209, 213);
+  margin-top: 10px;
 }
 
 .intro-box {
@@ -157,6 +200,10 @@
 
 .intro-text {
   margin: 2.5px 0 0 4px;
+}
+
+.profile-info-div {
+  background-color: white;
 }
 
 .profile-info-details-div {

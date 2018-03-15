@@ -13,6 +13,7 @@ class PostForm extends React.Component {
     e.preventDefault();
     const post = merge({}, this.state);
     this.props.action(post);
+    this.setState({ body: '' })
   }
 
   update (field) {
