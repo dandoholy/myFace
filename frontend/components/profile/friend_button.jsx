@@ -38,8 +38,8 @@ class FriendButton extends React.Component {
         {text}
         <div className='dropdown-positioner'>
           <ul className={`request-response-dropdown ${hoverStatus}`}>
-            <li onClick={ buttonAction[status](1) }>Accept</li>
-            <li onClick={ buttonAction[status](2) }>Reject</li>
+            <li onClick={ () => buttonAction[status](1) }>Accept</li>
+            <li onClick={ () => buttonAction[status](2) }>Reject</li>
           </ul>
         </div>
       </button>
@@ -57,7 +57,7 @@ const mapStateToProps = (state, ownProps) => {
   const buttonProps = { accepted: { disabled: false, text: 'Friends'},
     pendingOut: { disabled: true, text: "Friend Request Sent" },
     pendingIn: { disabled: false, text: "Respond to Friend Request" },
-    rejected: { disabled: true, text: "Add Friend" },
+    rejected: { disabled: false, text: "Add Friend" },
     none: { disabled: false, text: "Add Friend" },
   };
   const currentUser = state.entities.users[state.session.currentUser.id];
@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     buttonAction: { accepted: () => dispatch(destroyFriendship(userId)),
       pendingOut: () => ({}),
       pendingIn: (status) => dispatch(updateFriendship(userId, status)),
-      rejected: () => dispatch(createFriendship(userId)),
+      rejected: () => dispatch(updateFriendship(userId, 0)),
       none: () => dispatch(createFriendship(userId)),
     },
   };

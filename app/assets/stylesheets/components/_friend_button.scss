@@ -14,6 +14,7 @@
 
 .friend-request-button.disabled {
   cursor: default;
+  &:hover { background-color: rgb(246, 247, 249);}
 }
 
 .dropdown-positioner {

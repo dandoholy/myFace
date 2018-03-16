@@ -22,7 +22,8 @@ class Api::PostsController < ApplicationController
   end
 
   def index
-    @posts = Posts.new(Post.where("author_id = ? OR wall_id = ?", current_user.id, current_user.profile.id))
+    # @posts = Posts.new(Post.where("author_id = ? OR wall_id = ?", current_user.id, current_user.profile.id))
+    @posts = Posts.new(Post.all)
   end
 
   def destroy

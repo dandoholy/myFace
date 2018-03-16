@@ -20,7 +20,7 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
         return loggedIn ? (
             <Component {...props} />
           ) : (
-            null
+            <Redirect to='/'/>
           )
     }} />
   );

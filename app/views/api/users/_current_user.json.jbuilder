@@ -6,7 +6,6 @@
   json.iconPic user.profile.profile_pic.image.url(:icon)
   json.profileId user.profile.id
 
-json.friends do
   json.accepted do
     user.friends.each do |friend|
       json.set! friend.id do
@@ -40,4 +39,3 @@ json.friends do
       end
     end
   end
-end

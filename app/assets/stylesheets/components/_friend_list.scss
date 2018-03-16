@@ -1,0 +1,91 @@
+.friend-list-box {
+  width: 323px;
+  height: 421px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.friend-list-header {
+  width: 297px;
+  height: 24px;
+  padding: 12px 0;
+  margin: 0 12px;
+  font-family: 'SF Optimized', system-ui;
+  position: relative;
+}
+
+.friend-list-header div {
+  display: inline-block;
+}
+
+.friend-list-icon {
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+}
+
+.friend-list-label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 8px;
+  height: 18px;
+  top: 14px;
+  position: absolute;
+}
+
+.friend-count {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: rgb(144, 148, 156);
+  position: absolute;
+  top: 16px;
+  left: 92px;
+}
+
+.material-icons.fl-icon {
+  margin-left: 1px;
+  font-size: 21px;
+  text-align: center;
+}
+
+.friend-list-div {
+  height: 311px;
+  width: 311px;
+  margin: 0 auto;
+}
+
+.friend-item {
+  height: 33.33%;
+  width: 33.33%;
+  display: inline-block;
+  position: relative;
+}
+
+.friend-item img {
+  height: 101px;
+  width: 101px;
+  padding: 3px;
+}
+
+.friend-name {
+  color: white;
+  position: absolute;
+  z-index: 1;
+  bottom: 0px;
+  width: 98px;
+  height: 26px;
+  left: 8px;
+  text-align: left;
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  word-wrap: break-word;
+}
+
+.friend-list-div li {
+  list-style: none;
+}

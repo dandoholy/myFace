@@ -6,19 +6,19 @@ export const getProfByUserId = ( state , userId ) => {
 
 export const getFriendStatus = ( currentUser, friendId ) => {
   try {
-    if (Boolean(currentUser.friends.accepted[friendId])) return "accepted";
+    if (Boolean(currentUser.accepted[friendId])) return "accepted";
   } catch (e) {
   }
   try {
-    if (Boolean(currentUser.friends.pendingOut[friendId])) return "pendingOut";
+    if (Boolean(currentUser.pendingOut[friendId])) return "pendingOut";
   } catch (e) {
   }
   try {
-    if (Boolean(currentUser.friends.pendingIn[friendId])) return "pendingIn";
+    if (Boolean(currentUser.pendingIn[friendId])) return "pendingIn";
   } catch (e) {
   }
   try {
-    if (Boolean(currentUser.friends.rejectedIn[friendId])) return "rejected";
+    if (Boolean(currentUser.rejectedIn[friendId])) return "rejected";
   } catch (e) {
   }
   return "none"

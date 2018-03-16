@@ -50,6 +50,20 @@
   position: absolute;
 }
 
+.profile-photo {
+  height: 100%;
+  width: 100%;
+}
+
+.profile-photo img {
+  height: 100%;
+  width: 100%;
+  // object-fit: fill;
+}
+.profile-photo-container {
+  object-fit: fill;
+}
+
 .not-hovering {
 
 }
@@ -63,10 +77,36 @@
   z-index: 4;
   top: 13px;
   left: 20px;
+  color: rgb(196,195,192);
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  width: 142px;
+  height: 16px;
+  padding: 6px 12px;
+  border: 1px solid white;
 }
 
-.material-icons.mini {
+.cover-pic-uploader.hovering {
+  background-color: rgb(42, 36, 28);
+}
+
+
+.material-icons.cover-icon {
+  font-size: 22px;
+  transition-duration: 2s;
+  position: absolute;
+  top: 4px;
+}
+
+.material-icons.cover-icon.hoveredClass {
   font-size: 16px;
+}
+
+
+input[type='file'] {
+  color: transparent;
 }
 
 .cover-pic-uploader span {
@@ -77,10 +117,32 @@
   margin-bottom: 2px;
 }
 
+.uploader-label {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 40px;
+}
+
+.uploader-label.hidden {
+  display: none;
+}
+
 .cover-update-buttons {
   position: relative;
-  top: 289px;
-  left: 666px;
+  top: 260px;
+  left: 650px;
+  width: 200px;
+}
+
+.cover-update-buttons.not-previewing {
+  display: none;
+}
+
+.input { margin-top: 7px;}
+
+.input.unclicked {
+  display: hidden;
 }
 
 .cover-save-button {
@@ -109,6 +171,10 @@
   border-radius: 2px;
   text-align: center;
   padding: 0 6px;
+}
+
+.profile-pic-preview {
+
 }
 
 .profile-name {
@@ -143,6 +209,7 @@
   position: absolute;
   bottom: 17px;
   left: 14px;
+  z-index: 3;
 }
 
 .profile-photo-container {

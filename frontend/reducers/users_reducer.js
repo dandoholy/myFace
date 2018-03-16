@@ -10,7 +10,7 @@ const usersReducer = (state = {}, action) => {
       if (action.currentUser == null) { return {}; }
       return merge( {}, state, {[action.currentUser.id]: action.currentUser})
     case RECEIVE_PROFILE:
-      return merge({}, state, action.profile.user, action.profile.user);
+      return merge({}, state, action.profile.user);
     case RECEIVE_ALL_POSTS:
       return merge({}, state, action.users);
     default:

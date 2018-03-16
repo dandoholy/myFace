@@ -10,13 +10,13 @@ json.user do
         end
       end
     end
-    json.pending do
-      profile.user.pending.each do |pending|
-        json.set! pending.id do
-          json.partial! '/api/users/user_info', user: pending
-        end
-      end
-    end
+    # json.pending do
+    #   profile.user.pending.each do |pending|
+    #     json.set! pending.id do
+    #       json.partial! '/api/users/user_info', user: pending
+    #     end
+    #   end
+    # end
   end
 end
 json.cover_pic profile.cover_pic.image.url(:cover)

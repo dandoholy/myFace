@@ -12,11 +12,13 @@ class CoverPhoto extends React.Component {
       imageFile: null,
       imageUrl: null,
       hovered: false,
+      buttonClicked: false,
     };
     this.updateFile = this.updateFile.bind(this);
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.toggleClick = this.toggleClick.bind(this);
   }
 
   handleMouseEnter() {
@@ -51,10 +53,26 @@ class CoverPhoto extends React.Component {
     }
   }
 
+  toggleClick () {
+    this.setState({buttonClicked: !this.state.buttonClicked})
+  }
+
   render () {
-    const { profile, fullName } = this.props;
-    const previewing = (this.state.imageUrl) ? "previewing" : "hidden";
-    const hoveredClass = (this.state.hovered) ? "hovering" : "not-hovering"
+    const { profile, fullName, profileOwner } = this.props;
+    const previewing = (this.state.imageUrl) ? "previewing" : "not-previewing";
+    const hoveredClass = (this.state.hovered) ? "hovering" : "not-hovering";
+    const clickedClass = (this.state.buttonClicked) ? "clicked" :"hidden";
+    const coverUpdate = (profileOwner) ? (
+      <div className={`cover-pic-uploader ${hoveredClass}`}>
+        <button onClick={this.toggleClick}><i className={`material-icons cover-icon ${hoveredClass}`}>photo_camera</i>
+        <div className={`uploader-label ${hoveredClass}`}>Update Cover Photo</div></button>
+        <div className={`input ${clickedClass}`}><input type='file' onChange={this.updateFile}></input></div>
+        <div className={`cover-update-buttons ${previewing}`}>
+          <button className={`cover-cancel-button ${previewing}`} onClick={() => this.setState({ imageUrl: null, imageFile: null })}>Cancel</button>
+          <button className={`cover-save-button ${previewing}`} onClick={this.uploadPhoto('cover_pic')}>Save Changes</button>
+        </div>
+      </div>
+    ) : null;
     return (
       <div className='profile-cover-div'
         onMouseEnter={ this.handleMouseEnter }
@@ -63,20 +81,20 @@ class CoverPhoto extends React.Component {
         <div className='profile-cover-pic-container'>
           <img className={`cover-pic-preview ${previewing}`} src={this.state.imageUrl} />
           <img className='cover-pic' src={profile.cover_pic} />
-          <div className='cover-pic-uploader'>
-            {(this.state.hovered) ? <button><i className="material-icons mini">photo_camera</i> <span>Update Cover Photo</span></button> : <i className="material-icons">photo_camera</i>}
-            <div className='display-on-hover'><input type='file' onChange={this.updateFile}></input></div>
-            <div className={`cover-update-buttons ${previewing}`}>
-              <button className={`cover-cancel-button ${previewing}`} onClick={() => this.setState({ imageUrl: null, imageFile: null })}>Cancel</button>
-              <button className={`cover-save-button ${previewing}`} onClick={this.uploadPhoto('cover_pic')}>Save Changes</button>
-            </div>
-          </div>
+          {coverUpdate}
         </div>
         <div className='profile-name'>{this.props.fullName}</div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  const profileOwner = (state.session.currentUser.id == ownProps.match.params.userId);
+  return {
+    profileOwner
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const userId = ownProps.match.params.userId;
@@ -85,4 +103,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(CoverPhoto));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CoverPhoto));
