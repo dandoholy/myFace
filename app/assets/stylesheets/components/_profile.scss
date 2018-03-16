@@ -20,7 +20,6 @@
 .profile-header-div {
   width: inherit;
   height: 359px;
-  background-color: lightgreen;
 }
 
 .profile-cover-div {
@@ -36,11 +35,21 @@
 }
 
 .cover-pic-preview {
+  // height: 315px;
+  // width: 851px;
+  // object-fit: cover;
+  // position: absolute;
+  // z-index: 8;
+  // border: 0;
+}
+
+.cover-pic-preview.previewing {
   height: 315px;
   width: 851px;
   object-fit: cover;
   position: absolute;
-  z-index: 2;
+  z-index: 8;
+  border: 0;
 }
 
 .cover-pic {
@@ -74,7 +83,7 @@
 
 .cover-pic-uploader {
   position: absolute;
-  z-index: 4;
+  z-index: 6;
   top: 13px;
   left: 20px;
   color: rgb(196,195,192);
@@ -183,7 +192,7 @@ input[type='file'] {
   position: absolute;
   bottom: 18px;
   left: 200px;
-  z-index: 1;
+  z-index: 2;
   font-family: 'SF Optimized', system-ui;
   font-size: 24px;
   font-weight: 300;
@@ -209,7 +218,7 @@ input[type='file'] {
   position: absolute;
   bottom: 17px;
   left: 14px;
-  z-index: 3;
+  z-index: 5;
 }
 
 .profile-photo-container {

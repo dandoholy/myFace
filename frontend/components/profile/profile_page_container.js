@@ -10,6 +10,7 @@ import EditProfileContainer from './edit_profile_container';
 const mapStateToProps = ( state, ownProps ) => {
   const userId = ownProps.match.params.userId;
   const profile = getProfByUserId(state, userId);
+  const ownProfile = (state.session.currentUser.id == userId)
   let fullName;
   if (profile) {
     fullName = profile.user.full_name;
@@ -17,7 +18,8 @@ const mapStateToProps = ( state, ownProps ) => {
   return {
     profile,
     userId,
-    fullName
+    fullName,
+    ownProfile
   };
 };
 

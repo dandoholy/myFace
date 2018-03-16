@@ -29,7 +29,7 @@ class ProfileHeader extends React.Component {
   }
 
   render() {
-    const { profile, userId, fullName } = this.props;
+    const { profile, userId, fullName, ownProfile } = this.props;
     return (
       <div className='profile-header-total'>
         <div className='profile-cover-photo-div'>
@@ -45,7 +45,7 @@ class ProfileHeader extends React.Component {
           <div className='profile-nav-link-div'>
             <NavLink className='profile-nav-link' to={`/u/${userId}/photos`}>Photos</NavLink>
           </div>
-          <FriendButton />
+          {!ownProfile ? <FriendButton /> : null}
         </div>
         <div className='profile-pic-div'>
           <ProfilePhoto profile={profile} />

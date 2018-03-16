@@ -26,14 +26,14 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { profile, userId, fullName } = this.props;
+    const { profile, userId, fullName, ownProfile } = this.props;
 
     if (!profile) { return null; }
     return (
       <div className='profile-page-background' >
         <div className='total-profile-div'>
           <div className='profile-header-div'>
-            <ProfileHeader profile={profile} userId={userId} fullName={fullName} />
+            <ProfileHeader profile={profile} userId={userId} ownProfile={ownProfile} fullName={fullName} />
           </div>
           <div className='profile-main-div'>
             <div className='profile-sidebar'>
