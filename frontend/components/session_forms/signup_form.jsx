@@ -46,7 +46,6 @@ class SignupForm extends React.Component {
   handleSubmit (e) {
     e.preventDefault();
     const user = merge({}, this.state);
-    debugger
     this.props.signup(user);
   }
 

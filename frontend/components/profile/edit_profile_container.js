@@ -7,7 +7,6 @@ import { closeModal } from '../../actions/modal_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ( state, ownProps ) => {
-  // debugger
   const userId = ownProps.userId;
   const profile = getProfByUserId(state, userId);
   return {

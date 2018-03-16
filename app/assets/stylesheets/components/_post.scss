@@ -36,6 +36,7 @@ ol {
   height: auto;
   padding: 12px;
   background-color: white;
+  position: relative;
 }
 
 .post-author-div {
@@ -62,6 +63,36 @@ ol {
   height: 40px;
   display: inline-block;
   margin-right: 8px;
+}
+
+.edit-delete-dropdown {
+  text-align: right;
+  position: relative;
+  display: flex;
+  height: 0;
+  left: 460px;
+  bottom: 5px;
+  width: 30px;
+}
+
+.material-icons.dropdown {
+  font-size: 20px;
+  color: grey;
+  &:hover { cursor: pointer };
+}
+
+.dropdown-option {
+  font-size: 10px;
+  width: 40px;
+  text-align: right;
+  position: relative;
+  color: grey;
+  right: 45px;
+  top: 18px;
+  &:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+  }
 }
 
 // POST FORM

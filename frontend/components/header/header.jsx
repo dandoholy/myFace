@@ -37,7 +37,7 @@ class Header extends React.Component {
             <div className='header-nav-links'>
               <div className='header-prof-link'>
                 <div className='header-border-div'>
-                  <img src={currentUser.iconPic} /> <a href={`/#/u/${currentUser.id}`}>{currentUser.name}</a>
+                  <a href={`/#/u/${currentUser.id}`}><img src={currentUser.iconPic} /> {currentUser.name}</a>
                 </div>
               </div>
 

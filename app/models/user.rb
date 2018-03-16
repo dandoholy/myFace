@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include FriendableModel
   attr_reader :password
 
   after_initialize :ensure_session_token
@@ -16,24 +17,14 @@ class User < ApplicationRecord
   has_many :comments,
     foreign_key: :author_id
 
+  ###################
+  # FRIENDS
+  ###################
 
-  # USER SENT REQUEST
-  has_many :requested_friendships,
-    foreign_key: :requester_id,
-    class_name: :Friendship
-  # USER WAS REQUESTED
-  has_many :received_friendships,
-    foreign_key: :requestee_id,
-    class_name: :Friendship
 
-  # FRIENDS USER SENT REQUEST TO
-  has_many :requested_friends,
-    through: :requested_friendships,
-    source: :requestee
-  # FRIENDS USER GOT REQUEST FROM
-  has_many :received_friends,
-    through: :received_friendships,
-    source: :requester
+  ###################
+  # AUTH
+  ###################
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

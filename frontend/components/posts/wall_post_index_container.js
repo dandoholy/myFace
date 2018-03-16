@@ -5,6 +5,8 @@ import { fetchAllPosts } from '../../actions/post_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const posts = Object.values(state.entities.posts).reverse();
+
+  // const wallPosts = posts.filter(post => (post.wall_id == )
   const users = Object.values(state.entities.users);
   return {
     posts,

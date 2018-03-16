@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.userId;
   const profileId = state.entities.profiles.byUserId[userId];
   return {
-    currentUser: state.session.currentUser,
+    currentUser: state.entities.users[state.session.currentUser.id],
     defaultPost: {
       author_id: state.session.currentUser.id,
       body: '',

@@ -19,3 +19,9 @@ User.create!(email: 'guest@demo.com', password: 'starwars', first_name: 'guest',
 User.create!(email: 'grace@cutie.pie', password: 'starwars', first_name: 'Grace', last_name: 'Korn', gender: 'female', birthday: '1990-03-08')
 User.create!(email: 'dan@sky.net', password: 'starwars', first_name: 'Dan', last_name: 'Crabs', gender: 'male', birthday: '1991-09-16')
 User.create!(email: 'zed@ninjas.com', password: 'starwars', first_name: 'Zed', last_name: 'Nope', gender: 'male', birthday: '1980-08-13')
+User.create!(email: '4love2me0@virgin.media', password: 'imafreak', first_name: 'Laurette', last_name: 'Cougar', gender: 'female', birthday: '1992-09-23')
+
+# Friendship.create!(requester_id: 1, requested_id: 2, status: 0)
+# Friendship.create!(requester_id: 3, requested_id: 1, status: 0)
+# Friendship.create!(requester_id: , requested_id: , status: 0)
+# Friendship.create!(requester_id: , requested_id: , status: 0)

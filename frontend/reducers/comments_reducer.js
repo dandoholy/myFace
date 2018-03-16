@@ -6,6 +6,7 @@ import {
 import {
   RECEIVE_ALL_POSTS, DELETE_POST
 } from '../actions/post_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -18,6 +19,8 @@ const commentsReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_ALL_POSTS:
       return merge({}, state, action.comments)
+    case RECEIVE_CURRENT_USER:
+      if (action.currentUser == null) { return {}; }
     default:
       return state;
   }

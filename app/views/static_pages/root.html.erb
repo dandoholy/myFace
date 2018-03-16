@@ -1,6 +1,6 @@
 <script id="bootstrap-current-user" type="text/javascript">
   <% if logged_in? %>
-  	window.currentUser = <%= render("api/users/user.json.jbuilder",
+  	window.currentUser = <%= render("api/users/current_user.json.jbuilder",
   		user: current_user).html_safe %>
   <% end %>
   window.mf_logo = "<%= image_path("logo.png") %>"

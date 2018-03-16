@@ -9,7 +9,7 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.session.currentUser,
+    currentUser: state.entities.users[state.session.currentUser.id],
     defaultPost: {
       author_id: state.session.currentUser.id,
       body: '',

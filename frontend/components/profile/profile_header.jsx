@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import CoverPhoto from './cover_photo';
 import ProfilePhoto from './profile_photo';
+import FriendButton from './friend_button';
 
 class ProfileHeader extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class ProfileHeader extends React.Component {
           <div className='profile-nav-link-div'>
             <NavLink className='profile-nav-link' to={`/u/${userId}/photos`}>Photos</NavLink>
           </div>
+          <FriendButton />
         </div>
         <div className='profile-pic-div'>
           <ProfilePhoto profile={profile} />

@@ -18,6 +18,7 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit (e) {
+    debugger
     e.preventDefault();
     const user = merge({}, this.state);
     this.props.login(user);
@@ -53,7 +54,9 @@ class LoginForm extends React.Component {
               </div>
               <div className='demo-button'>
                 <button className='demo-submit'
-                  onClick={() => this.props.demo()}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.props.demo()}}
                   >Guest</button>
               </div>
             </div>

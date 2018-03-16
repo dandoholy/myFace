@@ -1,8 +1,16 @@
-import { RECEIVE_ALL_POSTS } from '../actions/post_actions'
-import { merge } from 'lodash'
+import { merge } from 'lodash';
+
+import { RECEIVE_ALL_POSTS } from '../actions/post_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_PROFILE } from '../actions/profile_actions';
 
 const usersReducer = (state = {}, action) => {
   switch (action.type) {
+    case RECEIVE_CURRENT_USER:
+      if (action.currentUser == null) { return {}; }
+      return merge( {}, state, {[action.currentUser.id]: action.currentUser})
+    case RECEIVE_PROFILE:
+      return merge({}, state, action.profile.user, action.profile.user);
     case RECEIVE_ALL_POSTS:
       return merge({}, state, action.users);
     default:
@@ -23,3 +31,8 @@ const byProfileId = (state = {}, action) => {
 }
 
 export default usersReducer;
+//
+// case RECEIVE_CURRENT_USER:
+//   if (action.currentUser) {
+//     return merge({}, state, { [action.currentUser.id]: action.currentUser });
+//   }

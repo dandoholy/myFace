@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  include FriendableController
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -7,6 +9,19 @@ class Api::UsersController < ApplicationController
     else
       render json: @user.errors.full_messages, status: 422
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    if @user
+      render :show
+    else
+      render json: { errors: ['User not found']}, status: 404
+    end
+  end
+
+  def index
+    @users = User.all
   end
 
   private

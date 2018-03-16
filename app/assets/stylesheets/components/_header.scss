@@ -76,7 +76,7 @@
 }
 
 .header-prof-link {
-  width: 65px;
+  width: 75px;
   height: 28px;
   align-items: center;
   // border-right: .5px solid rgb(58, 81, 132);
@@ -95,9 +95,10 @@
 }
 
 .header-border-div {
+  margin-top: 4.5px;
   border-right: .5px solid rgb(58, 81, 132);
-  height: 20px;
-  width: 65px;
+  height: 24px;
+  width: 75px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -107,6 +108,12 @@
   width: 24px;
   height: 24px;
   margin-right: 4px;
+  display: inline-block;
+}
+
+.header-border-div a {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .header-nav-notifs {

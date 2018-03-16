@@ -1,0 +1,41 @@
+.friend-request-button {
+  height: 26px;
+  padding: 0 10px;
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  font-family: 'SF Optimized', system-ui;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(75, 79, 86);
+  background-color: rgb(246, 247, 249);
+  &:hover { background-color: rgb(234, 235, 238);}
+}
+
+.friend-request-button.disabled {
+  cursor: default;
+}
+
+.dropdown-positioner {
+  position: relative;
+}
+
+.request-response-dropdown {
+  position: absolute;
+  width: 130px;
+  top: 6px;
+  padding: 5px 0;
+  line-height: 18px;
+  background-color: white;
+  box-shadow: 1px 1px darkgrey, -1px -1px darkgrey;
+}
+
+.request-response-dropdown li {
+  font-weight: 400;
+  color: black;
+  padding-left: 25px;
+  &:hover {
+    background-color: rgb(74, 104, 173);
+    color: white;
+  }
+}

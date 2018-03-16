@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import CreateCommentContainer from '../comments/create_comment_container';
 import CommentItem from '../comments/comment_index_item';
+import { removePost } from '../../actions/post_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import EditPostContainer from './edit_post_container';
 
 const mapStateToProps = state => {
   const comments = Object.values(state.entities.comments);
@@ -13,9 +16,21 @@ const mapStateToProps = state => {
   };
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    removePost: (id) => dispatch(removePost(id)),
+    openModal: (postId) => dispatch(openModal(<EditPostContainer postId={postId} />)),
+  };
+};
+
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      buttonClicked: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
 
   dateStr () {
@@ -33,8 +48,8 @@ class PostIndexItem extends React.Component {
       if (minutes > 1) {
         dateStr += 's';
       }
-    } else if (timeSince < 1000*60*60*60) {
-      hours = Math.floor(timeSince/(1000*60*60)%60);
+    } else if (timeSince < 1000*60*60*24) {
+      hours = Math.floor(timeSince/(1000*60*60)%24);
       dateStr = `${hours} hr`;
       if (hours > 1) {
         dateStr += 's';
@@ -45,20 +60,36 @@ class PostIndexItem extends React.Component {
     return dateStr;
   }
 
-  componentWillReceiveProps (nextProps) {
+  handleClick() {
+    this.setState( { buttonClicked: !this.state.buttonClicked } );
+  }
+
+  deletePost() {
+    const { post, removePost } = this.props;
+    debugger
+    removePost(post.id);
   }
 
   render () {
-    const { post, comments, users } = this.props;
+    const { post, comments, users, openModal } = this.props;
     const postComments = comments.filter(comment => comment.post_id === post.id);
     const dateStr = this.dateStr();
     // const postAuthorHeader = (post.wall_id) ? <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>
     //   <i className="material-icons">play_arrow</i>
     //   <Link to={`/u/${post.wall_id}`}>{users[post.author_id].full_name}</Link>
     //   : <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>;
+
+    const dropdownClasses = (this.state.buttonClicked) ? "shown" : "hidden";
     return (
       <li className="post-index-item">
         <div className='post-item-div'>
+          <div className='edit-delete-dropdown' onClick={this.handleClick}>
+            <i className="material-icons dropdown">arrow_drop_down</i>
+            <ul className={`post-dropdown ${dropdownClasses}`}>
+              <li className='dropdown-option' onClick={() => openModal(post.id)}>EDIT</li>
+              <li className='dropdown-option' onClick={this.deletePost}>DELETE</li>
+            </ul>
+          </div>
           <div className='post-author-div'>
             <img src={users[post.author_id].miniPic}/>
             <div className='author-timestamp'>
@@ -81,4 +112,4 @@ class PostIndexItem extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, null)(PostIndexItem);
+export default connect(mapStateToProps, mapDispatchToProps)(PostIndexItem);
