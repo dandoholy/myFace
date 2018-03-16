@@ -4,10 +4,7 @@ import { merge } from 'lodash';
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      post_id: this.props.postId,
-      body: ''
-    };
+    this.state = this.props.defaultComment;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -32,7 +29,6 @@ class CommentForm extends React.Component {
 
   render () {
     const { currentUserId, users } = this.props;
-
     return (
       <div className='total-comment-form-div'>
         <div className='photo-and-comment-form'>
@@ -54,4 +50,4 @@ class CommentForm extends React.Component {
   }
 }
 
-export default CommentForm
+export default CommentForm;

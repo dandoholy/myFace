@@ -6,9 +6,14 @@ import {
 } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const defaultComment = {
+    body: '',
+    postId: ownProps.postId
+  }
   return {
     users: state.entities.users,
     currentUserId: state.session.currentUser.id,
+    defaultComment: defaultComment
   }
 }
 

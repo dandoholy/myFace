@@ -4,10 +4,10 @@ export const RECEIVE_FRIENDSHIP = 'RECEIVE_FRIENDSHIP';
 export const RECEIVE_FRIENDSHIP_ERRORS = 'RECEIVE_FRIENDSHIP_ERRORS';
 export const DELETE_FRIENDSHIP = 'DELETE_FRIENDSHIP';
 
-export const receiveFriendship = friendship => {
+export const receiveFriendship = updatedCurrentUser => {
   return {
     type: RECEIVE_FRIENDSHIP,
-    friendship
+    updatedCurrentUser
   }
 }
 

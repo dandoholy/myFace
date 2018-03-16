@@ -3,8 +3,10 @@ module FriendableController
 
   def create_friendship
     @friendship = Friendship.new(requester_id: current_user.id, requested_id: params[:id], status: 0)
+
     if @friendship.save
-      render json: @friendship
+      # render json: @friendship
+      render("/api/users/_current_user", locals: {user: current_user})
     else
       render json: @friendship.errors.full_messages, status: 422
     end
@@ -13,7 +15,8 @@ module FriendableController
   def update_friendship
     @friendship = Friendship.find_by_user_ids(current_user.id, params[:id])
     if @friendship.update_attributes(friendship_params)
-      render json: @friendship
+      # render json: @friendship
+      render("/api/users/_current_user", user: current_user)
     else
       render json: @friendship.errors.full_messages, status: 422
     end
@@ -23,6 +26,7 @@ module FriendableController
     @friendship = Friendship.find_by_user_ids(current_user.id, params[:id])
     if @friendship
       @friendship.destroy!
+      render("/api/users/_current_user", user: current_user)
     else
       render json: { errors: "Friendship not found." }, status: 404
     end

@@ -9,6 +9,7 @@
   margin: 0 12px;
   padding: 8px 0 4px 0;
   display: flex;
+  position: relative;
 }
 
 .comment-photo-div {
@@ -73,4 +74,33 @@
 
 .photo-and-comment-form {
   display: flex;
+}
+
+// EDIT DROPDOWN
+.comment-edit-delete-dropdown {
+  position: absolute;
+  left: 450px;
+}
+
+.comment-dropdown-positioner {
+  position: relative;
+}
+
+.comment-post-dropdown {
+    position: absolute;
+    top: -7px;
+    right: 5px;
+    line-height: 14px;
+    padding: 0 4px;
+    width: 45px;
+}
+
+.comment-dropdown-option {
+  font-size: 11px;
+  color: grey;
+  text-align: right;
+  &:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+  }
 }

@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.currentUser.id],
     defaultPost: post,
-    formType: 'Edit Post'
+    formType: 'Edit Post',
+    users: state.entities.users
   };
 };
 
@@ -40,13 +41,16 @@ class EditPostForm extends React.Component {
   }
 
   render() {
-    const { action, formType, defaultPost, currentUser } = this.props;
+    debugger
+    const { action, formType, defaultPost, currentUser, users } = this.props;
     return (
       <PostForm
         action={action}
         formType={formType}
         defaultPost={defaultPost}
-        currentUser={currentUser} />
+        currentUser={currentUser}
+        currentUserId={currentUser.id}
+        users={users} />
     );
   }
 }

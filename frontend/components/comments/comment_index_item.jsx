@@ -2,15 +2,41 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { openModal, closeModal } from '../../actions/modal_actions';
+import EditCommentForm from './edit_comment_container';
+import { removeComment } from '../../actions/comment_actions';
+
 const mapStateToProps = state => {
   return {
+    currentUser: state.entities.users[state.session.currentUser.id],
     users: state.entities.users
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openModal: (commentId, postId) => dispatch(openModal(<EditCommentForm commentId={commentId} postId={postId}/>)),
+    removeComment: (commentId) => dispatch(removeComment(commentId))
   }
 }
 
 class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      buttonClicked: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
+  }
+
+  handleClick() {
+    this.setState( { buttonClicked: !this.state.buttonClicked } );
+  }
+
+  deleteComment() {
+    const { comment, removeComment } = this.props;
+    removeComment(comment.id);
   }
 
   dateStr() {
@@ -46,14 +72,27 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
-    const { users, comment } = this.props;
+    const { users, comment, currentUser, openModal } = this.props;
     const dateStr = this.dateStr();
+    const dropdownClasses = (this.state.buttonClicked) ? "shown" : "hidden";
+    const dropdown = (currentUser.id == comment.author_id) ? (
+      <div className='comment-edit-delete-dropdown' onClick={this.handleClick}>
+        <i className="material-icons dropdown">arrow_drop_down</i>
+        <div className='comment-dropdown-positioner'>
+          <ul className={`comment-post-dropdown ${dropdownClasses}`}>
+            <li className='comment-dropdown-option' onClick={() => openModal(comment.id, comment.post_id)}>EDIT</li>
+            <li className='comment-dropdown-option' onClick={this.deleteComment}>DELETE</li>
+          </ul>
+        </div>
+      </div>
+    ) : null;
     return (
       <li className="comment-index-item">
+        {dropdown}
         <div className='comment-photo-div'><img src={users[comment.author_id].miniPic}/></div>
         <div className='comment-content'>
           <div className='comment-body'>
-            <span><a href={`/u/${comment.author_id}`}>{users[comment.author_id].full_name} </a>{comment.body}</span>
+            <span><a href={`/#/u/${comment.author_id}`}>{users[comment.author_id].full_name} </a>{comment.body}</span>
           </div>
             <div className='comment-timestamp-div'>{dateStr}</div>
         </div>
@@ -62,4 +101,4 @@ class CommentIndexItem extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, null)(CommentIndexItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentIndexItem);

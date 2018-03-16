@@ -10,9 +10,11 @@ import EditPostContainer from './edit_post_container';
 
 const mapStateToProps = state => {
   const comments = Object.values(state.entities.comments);
+  const currentUserId = state.session.currentUser.id;
   return {
     users: state.entities.users,
-    comments
+    comments,
+    currentUserId
   };
 }
 
@@ -66,30 +68,33 @@ class PostIndexItem extends React.Component {
 
   deletePost() {
     const { post, removePost } = this.props;
-    debugger
     removePost(post.id);
   }
 
   render () {
-    const { post, comments, users, openModal } = this.props;
+    const { post, comments, users, openModal, currentUserId } = this.props;
     const postComments = comments.filter(comment => comment.post_id === post.id);
     const dateStr = this.dateStr();
     // const postAuthorHeader = (post.wall_id) ? <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>
     //   <i className="material-icons">play_arrow</i>
     //   <Link to={`/u/${post.wall_id}`}>{users[post.author_id].full_name}</Link>
     //   : <Link to={`/u/${post.author_id}`}>{users[post.author_id].full_name}</Link>;
-
     const dropdownClasses = (this.state.buttonClicked) ? "shown" : "hidden";
+
+    const dropdown = (currentUserId == post.author_id) ? (
+      <div className='edit-delete-dropdown' onClick={this.handleClick}>
+        <i className="material-icons dropdown">arrow_drop_down</i>
+        <ul className={`post-dropdown ${dropdownClasses}`}>
+          <li className='dropdown-option' onClick={() => openModal(post.id)}>EDIT</li>
+          <li className='dropdown-option' onClick={this.deletePost}>DELETE</li>
+        </ul>
+      </div>
+    ) : null;
+
     return (
       <li className="post-index-item">
         <div className='post-item-div'>
-          <div className='edit-delete-dropdown' onClick={this.handleClick}>
-            <i className="material-icons dropdown">arrow_drop_down</i>
-            <ul className={`post-dropdown ${dropdownClasses}`}>
-              <li className='dropdown-option' onClick={() => openModal(post.id)}>EDIT</li>
-              <li className='dropdown-option' onClick={this.deletePost}>DELETE</li>
-            </ul>
-          </div>
+          {dropdown}
           <div className='post-author-div'>
             <img src={users[post.author_id].miniPic}/>
             <div className='author-timestamp'>
