@@ -41,7 +41,6 @@ class EditPostForm extends React.Component {
   }
 
   render() {
-    debugger
     const { action, formType, defaultPost, currentUser, users } = this.props;
     return (
       <PostForm

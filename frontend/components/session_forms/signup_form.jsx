@@ -21,7 +21,6 @@ class SignupForm extends React.Component {
       gender: ''
     };
     this.birthday = [currYear, currMo, currDay];
-    // debugger
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateBirthday = this.updateBirthday.bind(this);

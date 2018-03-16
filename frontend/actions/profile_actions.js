@@ -32,7 +32,6 @@ export const updateProfile = (profile, userId) => dispatch => {
 };
 
 export const updateProfilePhoto = (profile, userId) => dispatch => {
-  debugger
   return ProfileAPIUtil.updateProfilePhoto(profile, userId).then(
     profile => dispatch(receiveProfile(profile)),
     errors => {
