@@ -8,7 +8,6 @@ import {
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   const defaultComment = {
     body: '',
     post_id: ownProps.postId
@@ -36,7 +35,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 class EditCommentForm extends React.Component {
   componentDidMount() {
     this.props.fetchComment(this.props.commentId);
-    debugger
   }
 
   render () {

@@ -8,7 +8,7 @@ import {
 const mapStateToProps = (state, ownProps) => {
   const defaultComment = {
     body: '',
-    postId: ownProps.postId
+    post_id: ownProps.postId
   }
   return {
     users: state.entities.users,

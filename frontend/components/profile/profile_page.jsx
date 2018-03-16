@@ -42,7 +42,6 @@ class ProfilePage extends React.Component {
             </div>
             <div className='profile-posts-div'>
               <div className='profile-post-form-div'>
-                <WallPostForm />
               </div>
               <div className='profile-posts-list-div'>
                 <ol className='profile-posts-list'>
@@ -56,6 +55,8 @@ class ProfilePage extends React.Component {
     );
   }
 }
+
+// <WallPostForm />
 
 //  PROFILE PHOTO
 // <img className='profile-pic-preview' src={this.state.imageUrl} />
