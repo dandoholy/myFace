@@ -64,21 +64,8 @@
   width: 100%;
 }
 
-.profile-photo img {
-  height: 100%;
-  width: 100%;
-  // object-fit: fill;
-}
 .profile-photo-container {
   object-fit: fill;
-}
-
-.not-hovering {
-
-}
-
-.hovering {
-
 }
 
 .cover-pic-uploader {
@@ -137,14 +124,53 @@ input[type='file'] {
   display: none;
 }
 
-.cover-update-buttons {
+.cover-photo-update-buttons {
   position: relative;
-  top: 260px;
+  top: 285px;
   left: 650px;
   width: 200px;
 }
 
-.cover-update-buttons.not-previewing {
+.profile-photo-update-buttons {
+  position: relative;
+  top: -17px;
+  left: 666px;
+  width: 200px;
+}
+
+.cover-photo-update-buttons.not-previewing, .profile-photo-update-buttons.not-previewing {
+  display: none;
+}
+
+.profile-icon {
+  position: absolute;
+  top: 13px;
+  left: 6px;
+}
+
+.pp-uploader-label {
+  position: absolute;
+  top: 17px;
+  left: 34px;
+}
+
+.profile-pic-uploader {
+  display: flex;
+  position: absolute;
+  top: 114px;
+  background-color: black;
+  width: 164px;
+  height: 52px;
+  color: white;
+  font-family: "SF Optimized", system-ui;
+  font-size: 12px;
+  font-weight: 500;
+  filter: opacity(.7);
+  align-items: center;
+  &:hover { cursor: pointer; }
+}
+
+.profile-pic-uploader.not-hovering {
   display: none;
 }
 
@@ -154,7 +180,7 @@ input[type='file'] {
   display: hidden;
 }
 
-.cover-save-button {
+.photo-save-button {
   width: 84px;
   height: 26px;
   background-color: rgb(66, 103, 178);
@@ -169,7 +195,7 @@ input[type='file'] {
   margin-left: 4px;
 }
 
-.cover-cancel-button {
+.photo-cancel-button {
   width: 40px;
   height: 26px;
   background-color: rgb(246, 247, 249);
@@ -183,7 +209,14 @@ input[type='file'] {
 }
 
 .profile-pic-preview {
+  z-index: 8;
+  height: 164px;
+  width: 164px;
+  position: absolute;
+}
 
+.not-previewing {
+  display: none;
 }
 
 .profile-name {
@@ -228,6 +261,7 @@ input[type='file'] {
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 2px;
+  position: relative;
 }
 
 .profile-nav-link-div {

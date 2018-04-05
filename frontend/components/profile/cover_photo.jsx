@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { updateProfilePhoto } from '../../actions/profile_actions';
+import PhotoUpload from '../shared/photo_upload';
 
 
 class CoverPhoto extends React.Component {
@@ -12,13 +13,14 @@ class CoverPhoto extends React.Component {
       imageFile: null,
       imageUrl: null,
       hovered: false,
-      buttonClicked: false,
+      // buttonClicked: false,
     };
     this.updateFile = this.updateFile.bind(this);
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.toggleClick = this.toggleClick.bind(this);
+    // this.toggleClick = this.toggleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleMouseEnter() {
@@ -44,32 +46,37 @@ class CoverPhoto extends React.Component {
 
   uploadPhoto (picCategory) {
     // const { submit, picCategory } = this.props;
-    return (e) => {
-      const file = this.state.imageFile;
-      const formData = new FormData();
-      if (file) formData.append(`profile[${picCategory}]`, file);
-      this.props.updateProfilePhoto(formData);
-      this.setState({ imageUrl: null, imageFile: null });
-    }
+    const file = this.state.imageFile;
+    const formData = new FormData();
+    if (file) formData.append(`profile[${picCategory}]`, file);
+    this.props.updateProfilePhoto(formData);
+    this.setState({ imageUrl: null, imageFile: null });
   }
 
-  toggleClick () {
-    this.setState({buttonClicked: !this.state.buttonClicked})
+  // toggleClick () {
+  //   this.setState({buttonClicked: !this.state.buttonClicked});
+  // }
+
+  handleClick() {
+    // this.photoUpload.input.click();
+    this.fileInput.click();
   }
 
   render () {
     const { profile, fullName, profileOwner } = this.props;
     const previewing = (this.state.imageUrl) ? "previewing" : "not-previewing";
     const hoveredClass = (this.state.hovered) ? "hovering" : "not-hovering";
-    const clickedClass = (this.state.buttonClicked) ? "clicked" :"hidden";
+    // const clickedClass = (this.state.buttonClicked) ? "clicked" :"hidden";
     const coverUpdate = (profileOwner) ? (
-      <div className={`cover-pic-uploader ${hoveredClass}`}>
+      <div className={`cover-pic-uploader ${hoveredClass}`} >
         <button onClick={this.toggleClick}><i className={`material-icons cover-icon ${hoveredClass}`}>photo_camera</i>
-        <div className={`uploader-label ${hoveredClass}`}>Update Cover Photo</div></button>
-        <div className={`input ${clickedClass}`}><input type='file' onChange={this.updateFile}></input></div>
-        <div className={`cover-update-buttons ${previewing}`}>
-          <button className={`cover-cancel-button ${previewing}`} onClick={() => this.setState({ imageUrl: null, imageFile: null })}>Cancel</button>
-          <button className={`cover-save-button ${previewing}`} onClick={this.uploadPhoto('cover_pic')}>Save Changes</button>
+        <div className={`uploader-label ${hoveredClass}`} onClick={this.handleClick}>Update Cover Photo</div></button>
+        <div className={`input hidden`}><input type='file' onChange={this.updateFile} ref={el => this.fileInput = el}></input></div>
+
+
+        <div className={`cover-photo-update-buttons ${previewing}`}>
+          <button className={`photo-cancel-button ${previewing}`} onClick={() => this.setState({ imageUrl: null, imageFile: null })}>Cancel</button>
+          <button className={`photo-save-button ${previewing}`} onClick={() => this.uploadPhoto('cover_pic')}>Save Changes</button>
         </div>
       </div>
     ) : null;
@@ -104,3 +111,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CoverPhoto));
+
+
+// ABSTRACTING PHOTOUPLOAD
+// <div className={`input ${clickedClass}`}>
+//   <PhotoUpload
+//     submit={this.props.updateProfilePhoto}
+//     stateName="profile"
+//     picCategory="cover_pic"
+//     ref={el => this.photoUpload = el}
+//   />
+// </div>

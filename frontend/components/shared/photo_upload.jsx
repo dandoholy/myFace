@@ -25,14 +25,20 @@ class PhotoUpload extends React.Component {
   }
 
   uploadPhoto () {
-    const { submit, picCategory } = this.props;
+    const { submit, stateName, picCategory } = this.props;
     return (e) => {
       const file = this.state.imageFile;
       const formData = new FormData();
-      if (file) formData.append(`profile[${picCategory}]`, file);
-      this.props.submit(formData);
+      if (file) formData.append(`${stateName}[${picCategory}]`, file);
+      submit(formData);
       this.setState({ imageUrl: null, imageFile: null });
     }
+  }
+
+  render () {
+    return (
+      <input type='file' onChange={this.updateFile} ref={el => this.input = el}></input>
+    )
   }
 
 

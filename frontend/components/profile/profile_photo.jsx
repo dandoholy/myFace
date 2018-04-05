@@ -16,6 +16,7 @@ class ProfilePhoto extends React.Component {
     this.uploadPhoto = this.uploadPhoto.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleMouseEnter() {
@@ -41,30 +42,52 @@ class ProfilePhoto extends React.Component {
 
   uploadPhoto (picCategory) {
     // const { submit, picCategory } = this.props;
-    return (e) => {
-      const file = this.state.imageFile;
-      const formData = new FormData();
-      if (file) formData.append(`profile[${picCategory}]`, file);
-      this.props.updateProfilePhoto(formData);
-      this.setState({ imageUrl: null, imageFile: null });
-    }
+    const file = this.state.imageFile;
+    const formData = new FormData();
+    if (file) formData.append(`profile[${picCategory}]`, file);
+    this.props.updateProfilePhoto(formData);
+    this.setState({ imageUrl: null, imageFile: null });
+  }
+
+  handleClick() {
+    this.fileInput.click();
   }
 
   render () {
-    const { profile, fullName } = this.props;
+    const { profile, fullName, profileOwner } = this.props;
+    const previewing = (this.state.imageUrl) ? "previewing" : "not-previewing";
     const hoveredClass = (this.state.hovered) ? "hovering" : "not-hovering"
+    const profileUpdate = (profileOwner) ? (
+      <div className={`profile-pic-uploader ${hoveredClass}`} onClick={this.handleClick} >
+        <button className={`profile-pic-button`} ><i className={`material-icons profile-icon`}>photo_camera</i>
+        <div className={`pp-uploader-label`}>Update Profile Photo</div></button>
+        <div className={`input hidden`}><input type='file' onChange={this.updateFile} ref={el => this.fileInput = el}></input></div>
+
+      </div>
+    ) : null;
     return (
-      <div className='profile-photo-container'
+      <div className={`profile-photo-container ${hoveredClass}`}
         onMouseEnter={ this.handleMouseEnter }
         onMouseLeave={ this.handleMouseLeave }
       >
-        <div className={`profile-photo ${hoveredClass}`}><img src={this.props.profile.profile_pic}/></div>
-        <div className={`profile-photo ${hoveredClass}`}></div>
+        <img className={`profile-pic-preview ${previewing}`} src={this.state.imageUrl} />
+        <img className={`profile-photo`} src={this.props.profile.profile_pic}/>
+        {profileUpdate}
+        <div className={`profile-photo-update-buttons ${previewing}`}>
+          <button className={`photo-cancel-button ${previewing}`} onClick={() => this.setState({ imageUrl: null, imageFile: null })}>Cancel</button>
+          <button className={`photo-save-button ${previewing}`} onClick={() => this.uploadPhoto('profile_pic')}>Save Changes</button>
+        </div>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  const profileOwner = (state.session.currentUser.id == ownProps.match.params.userId);
+  return {
+    profileOwner
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const userId = ownProps.match.params.userId;
@@ -73,4 +96,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(ProfilePhoto));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfilePhoto));
